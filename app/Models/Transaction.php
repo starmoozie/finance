@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Constants\TransactionConstant;
 
 class Transaction extends BaseModel
 {
+    use \Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
+
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -15,7 +18,7 @@ class Transaction extends BaseModel
     protected $fillable = [
         'created_by',
         'details',
-        'is_income',
+        'type',
     ];
     protected $casts    = [
         'details' => 'array'
@@ -38,6 +41,15 @@ class Transaction extends BaseModel
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function products()
+    {
+        return $this->belongsToJson(
+            Product::class,
+            'details[]->product_id',
+            'id'
+        );
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -46,17 +58,22 @@ class Transaction extends BaseModel
 
     public function scopeIncome($query)
     {
-        return $query->where('is_income', true);
+        return $query->where('type', TransactionConstant::INCOME);
     }
 
     public function scopeExpense($query)
     {
-        return $query->where('is_income', false);
+        return $query->where('type', TransactionConstant::EXPENSE);
+    }
+
+    public function scopeWholeSale($query)
+    {
+        return $query->where('type', TransactionConstant::WHOLE_SALE);
     }
 
     public function scopeSplitDebitCredit($query)
     {
-        return $query->selectRaw("(CASE WHEN is_income = 1 THEN created_at ELSE NULL END) as aa");
+        return $query->selectRaw("(CASE WHEN type = 1 THEN created_at ELSE NULL END) as aa");
     }
 
     function scopeSelectByCreatedRange($query, $dates)
@@ -90,14 +107,22 @@ class Transaction extends BaseModel
         return rupiah(array_sum(array_column($this->details, 'nominal')));
     }
 
+    /**
+     * Sum qty as total_qty
+     */
+    public function getTotalQtyAttribute(): string
+    {
+        return rupiah(array_sum(array_column($this->details, 'qty')));
+    }
+
     public function getDebitAttribute()
     {
-        return $this->is_income ? $this->total_nominal : 0;
+        return $this->type === 1 ? $this->total_nominal : 0;
     }
 
     public function getCreditAttribute()
     {
-        return !$this->is_income ? $this->total_nominal : 0;
+        return $this->type !== TransactionConstant::INCOME ? $this->total_nominal : 0;
     }
 
     /*

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Transaction as Model;
 use App\Http\Requests\IncomeRequest as Request;
+use App\Constants\TransactionConstant;
 
 class IncomeCrudController extends BaseCrudController
 {
@@ -22,7 +23,7 @@ class IncomeCrudController extends BaseCrudController
      */
     public function store()
     {
-        $this->addRequest($this->crud->getRequest(), ['created_by' => starmoozie_user()->id, 'is_income' => true]);
+        $this->addRequest($this->crud->getRequest(), ['created_by' => starmoozie_user()->id, 'type' => TransactionConstant::INCOME]);
 
         return $this->traitStore();
     }

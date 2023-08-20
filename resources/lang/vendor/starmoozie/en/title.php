@@ -21,8 +21,10 @@ return [
     'creator' => 'Creator',
     'product' => 'Product',
     'master' => 'Master',
+    'wholesale' => 'Whole Sale',
     'price' => 'Price',
     'stock' => 'Stock',
+    'qty' => 'Quantity',
 
     // Tabs
     'general' => 'General',

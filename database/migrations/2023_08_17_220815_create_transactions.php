@@ -17,7 +17,7 @@ class CreateTransactions extends Migration
             $table->uuid('id')->primary();
             $table->string('created_by', 14)->index();
             $table->json('details');
-            $table->boolean('is_income')->default(false);
+            $table->smallInteger('type')->default(0);
             $table->timestamps();
         });
     }
