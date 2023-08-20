@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class IncomeRequest extends BaseRequest
+class SaleRequest extends BaseRequest
 {
     /**
      * Get the validation rules that apply to the request.

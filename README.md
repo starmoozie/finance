@@ -12,7 +12,7 @@
 - Role
 - User
 - Purchase
-- Income
+- Sale
 - Expense
 - Report
 

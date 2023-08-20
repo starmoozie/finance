@@ -28,10 +28,10 @@ class MenuSeeder extends Seeder
             'controller'  => null
         ],
         [
-            'name'        => 'income',
-            'route'       => 'income',
+            'name'        => 'sale',
+            'route'       => 'sale',
             'permissions' => ['create', 'read', 'update', 'delete', 'show', 'personal'],
-            'controller'  => 'IncomeCrudController'
+            'controller'  => 'SaleCrudController'
         ],
         [
             'name'        => 'expense',

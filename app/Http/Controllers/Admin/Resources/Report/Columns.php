@@ -12,7 +12,7 @@ trait Columns
     protected function setColumns()
     {
         $this->crud->column('debit')
-            ->label(__('starmoozie::title.income'));
+            ->label(__('starmoozie::title.sale'));
 
         $this->crud->column('credit')
             ->label(__('starmoozie::title.expense'));

@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Transaction as Model;
-use App\Http\Requests\IncomeRequest as Request;
+use App\Http\Requests\SaleRequest as Request;
 use App\Constants\TransactionConstant;
 
-class IncomeCrudController extends BaseCrudController
+class SaleCrudController extends BaseCrudController
 {
-    use Resources\Income\Main;
+    use Resources\Sale\Main;
 
     protected $model   = Model::class;
     protected $request = Request::class;
     protected $scopes  = [
-        'income'
+        'sale'
     ];
 
     /**
@@ -23,7 +23,7 @@ class IncomeCrudController extends BaseCrudController
      */
     public function store()
     {
-        $this->addRequest($this->crud->getRequest(), ['created_by' => starmoozie_user()->id, 'type' => TransactionConstant::INCOME]);
+        $this->addRequest($this->crud->getRequest(), ['created_by' => starmoozie_user()->id, 'type' => TransactionConstant::SALE]);
 
         return $this->traitStore();
     }

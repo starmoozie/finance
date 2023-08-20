@@ -56,9 +56,9 @@ class Transaction extends BaseModel
     |--------------------------------------------------------------------------
     */
 
-    public function scopeIncome($query)
+    public function scopeSale($query)
     {
-        return $query->where('type', TransactionConstant::INCOME);
+        return $query->where('type', TransactionConstant::SALE);
     }
 
     public function scopeExpense($query)
@@ -122,7 +122,7 @@ class Transaction extends BaseModel
 
     public function getCreditAttribute()
     {
-        return $this->type !== TransactionConstant::INCOME ? $this->total_nominal : 0;
+        return $this->type !== TransactionConstant::SALE ? $this->total_nominal : 0;
     }
 
     /*

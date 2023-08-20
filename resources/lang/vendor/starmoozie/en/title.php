@@ -10,7 +10,7 @@ return [
     'usermanagement' => 'User Management',
     'group' => 'Groups',
     'transaction' => 'Transaction',
-    'income' => 'Income',
+    'sale' => 'Sale',
     'expense' => 'Expense',
     'nominal' => 'Nominal',
     'note' => 'Note',
