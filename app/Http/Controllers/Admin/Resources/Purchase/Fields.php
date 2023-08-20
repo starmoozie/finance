@@ -40,7 +40,7 @@ trait Fields
             ],
             [
                 'name'       => 'nominal',
-                'label'      => __('starmoozie::title.nominal'),
+                'label'      => __('starmoozie::title.total_price'),
                 'prefix'     => 'Rp',
                 'wrapper'    => ['class' => 'form-group col-md-4'],
                 'attributes' => ['required' => 'required']

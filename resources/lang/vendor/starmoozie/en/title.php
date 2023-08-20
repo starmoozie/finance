@@ -25,6 +25,7 @@ return [
     'price' => 'Price',
     'stock' => 'Stock',
     'qty' => 'Quantity',
+    'total_price' => 'Total Price',
 
     // Tabs
     'general' => 'General',

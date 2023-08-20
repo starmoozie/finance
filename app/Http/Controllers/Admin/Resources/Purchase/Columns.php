@@ -16,7 +16,7 @@ trait Columns
         $this->creatorColumn();
 
         $this->crud->column('total_nominal')
-            ->label(__('starmoozie::title.total'));
+            ->label(__('starmoozie::title.total_price'));
 
         $this->crud->column('created_at')
             ->label(__('starmoozie::title.created'))
