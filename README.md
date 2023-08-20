@@ -1,9 +1,9 @@
 ## About App
 
-- Aplikasi toko sederhana
+- Aplikasi keuangan sederhana
 
 ## Fitur
-- Pencatatan keluar masuk uang
+- Pencatatan keluar masuknya uang
 
 ## Default Menu
 - Permission
