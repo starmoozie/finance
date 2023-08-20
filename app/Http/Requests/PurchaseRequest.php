@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class WholeSaleRequest extends BaseRequest
+class PurchaseRequest extends BaseRequest
 {
     /**
      * Get the validation rules that apply to the request.

@@ -66,9 +66,9 @@ class Transaction extends BaseModel
         return $query->where('type', TransactionConstant::EXPENSE);
     }
 
-    public function scopeWholeSale($query)
+    public function scopePurchase($query)
     {
-        return $query->where('type', TransactionConstant::WHOLE_SALE);
+        return $query->where('type', TransactionConstant::PURCHASE);
     }
 
     public function scopeSplitDebitCredit($query)

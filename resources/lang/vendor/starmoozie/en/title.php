@@ -21,7 +21,7 @@ return [
     'creator' => 'Creator',
     'product' => 'Product',
     'master' => 'Master',
-    'wholesale' => 'Whole Sale',
+    'purchase' => 'Purchase',
     'price' => 'Price',
     'stock' => 'Stock',
     'qty' => 'Quantity',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Resources\WholeSale;
+namespace App\Http\Controllers\Admin\Resources\Purchase;
 
 trait Main
 {

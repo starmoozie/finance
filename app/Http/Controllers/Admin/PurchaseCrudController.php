@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Transaction as Model;
-use App\Http\Requests\WholeSaleRequest as Request;
+use App\Http\Requests\PurchaseRequest as Request;
 use App\Constants\TransactionConstant;
 
-class WholeSaleCrudController extends BaseCrudController
+class PurchaseCrudController extends BaseCrudController
 {
-    use Resources\WholeSale\Main;
+    use Resources\Purchase\Main;
 
     protected $model   = Model::class;
     protected $request = Request::class;
     protected $scopes  = [
-        'wholeSale'
+        'purchase'
     ];
 
     /**
@@ -25,7 +25,7 @@ class WholeSaleCrudController extends BaseCrudController
     {
         $request = $this->crud->getRequest();
 
-        $this->addRequest($request, ['created_by' => starmoozie_user()->id, 'type' => TransactionConstant::WHOLE_SALE]);
+        $this->addRequest($request, ['created_by' => starmoozie_user()->id, 'type' => TransactionConstant::PURCHASE]);
 
         $this->handleProductQty($request->details);
 
