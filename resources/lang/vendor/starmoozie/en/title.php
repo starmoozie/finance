@@ -19,6 +19,10 @@ return [
     'details' => 'Details',
     'report' => 'Report',
     'creator' => 'Creator',
+    'product' => 'Product',
+    'master' => 'Master',
+    'price' => 'Price',
+    'stock' => 'Stock',
 
     // Tabs
     'general' => 'General',

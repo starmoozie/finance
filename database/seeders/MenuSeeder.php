@@ -45,6 +45,18 @@ class MenuSeeder extends Seeder
             'permissions' => ['read', 'export', 'personal'],
             'controller'  => 'ReportCrudController'
         ],
+        [
+            'name'        => 'master',
+            'route'       => '#',
+            'permissions' => ['read'],
+            'controller'  => null
+        ],
+        [
+            'name'        => 'product',
+            'route'       => 'product',
+            'permissions' => ['create', 'read', 'update', 'delete', 'show', 'personal'],
+            'controller'  => 'ProductCrudController'
+        ],
     ];
 
     /**

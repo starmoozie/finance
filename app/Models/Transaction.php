@@ -65,11 +65,6 @@ class Transaction extends BaseModel
             ->whereDate('created_at', '<=', dateFormat($dates->to));
     }
 
-    function scopeSelectByCreator($query, $user_id)
-    {
-        return $query->whereCreatedBy($user_id);
-    }
-
     function scopeSelectByNominalRange($query, $nominal_range)
     {
         return $query

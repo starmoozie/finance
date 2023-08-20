@@ -34,6 +34,11 @@ class BaseModel extends Model
     |--------------------------------------------------------------------------
     */
 
+    function scopeSelectByCreator($query, $user_id)
+    {
+        return $query->whereCreatedBy($user_id);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS
