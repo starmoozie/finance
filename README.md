@@ -1,11 +1,9 @@
 ## About App
 
-- Core CRUD App By Laravel ( Role based menu permission )
+- Aplikasi toko sederhana
 
-## Related Model
-- N Menu -> N Permission
-- N MenuPermission -> N Role
-- 1 User 1 Role
+## Fitur
+- Pencatatan keluar masuk barang
 
 ## Default Menu
 - Permission
@@ -13,17 +11,18 @@
 - Route
 - Role
 - User
+- Purchase
+- Income
+- Expense
+- Report
 
 ## Install
 - `composer install`
 - `php artisan starmoozie:install`
 - `php artisan migrate --seed`
+- `php artisan db:seed --class=RouteSeeder`
+- `php artisan db:seed --class=MenuSeeder`
 
 ## Default User
 - Email `starmoozie@gmail.com`
 - Password `password`
-
-## Dependecies
-- https://github.com/starmoozie/laravel-crud
-- https://github.com/starmoozie/laravel-crud-generators
-- https://github.com/starmoozie/laravel-menu-permission
