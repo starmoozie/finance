@@ -125,6 +125,19 @@ class Transaction extends BaseModel
         return $this->type !== TransactionConstant::SALE ? $this->total_nominal : 0;
     }
 
+    public function getDetailsWithProductAttribute()
+    {
+        $products = $this->products;
+        $details  = [];
+        foreach ($this->details as $key => $detail) {
+            $details[$key] = $detail;
+            $details[$key]['product'] = $products->where('id', $detail['product_id'])->first()?->name;
+            unset($details[$key]['product_id']);
+        }
+
+        return $details;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

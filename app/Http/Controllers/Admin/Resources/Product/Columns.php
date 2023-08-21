@@ -18,10 +18,10 @@ trait Columns
         $this->crud->column('name')
             ->label(__('starmoozie::base.name'));
 
-        $this->crud->column('price')
+        $this->crud->column('current_price')
             ->label(__('starmoozie::title.price'));
 
-        $this->crud->column('stock')
+        $this->crud->column('current_stock')
             ->label(__('starmoozie::title.stock'));
     }
 }

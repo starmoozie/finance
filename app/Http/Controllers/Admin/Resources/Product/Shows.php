@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Resources\Product;
+use Spatie\Activitylog\Models\Activity;
 
 trait Shows
 {
@@ -13,9 +14,12 @@ trait Shows
     {
         $this->setColumns();
 
-        $this->crud->column('details')
+        $this->crud->column('transactions')
             ->type('view')
-            ->view('starmoozie::crud.pages.transaction.details')
-            ->after('total_nominal');
+            ->view('starmoozie::crud.pages.product.transaction');
+
+        $this->crud->column('histories')
+            ->type('view')
+            ->view('starmoozie::crud.pages.product.history');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 class Product extends BaseModel
 {
+    use \Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
+
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -39,6 +41,24 @@ class Product extends BaseModel
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function transactions()
+    {
+        return $this->hasManyJson(
+            Transaction::class,
+            'details[]->product_id',
+            'id'
+        );
+    }
+
+    public function histories()
+    {
+        return $this->hasMany(
+            \Spatie\Activitylog\Models\Activity::class,
+            'subject_id',
+            'id'
+        );
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -50,6 +70,23 @@ class Product extends BaseModel
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
+
+    function getCurrentPriceAttribute()
+    {
+        return rupiah($this->price);
+    }
+
+    function getCurrentStockAttribute()
+    {
+        return rupiah($this->stock);
+    }
+
+    public function getOldPriceAttribute()
+    {
+        $details = $this->details;
+
+        return $details ? end($details)['old_price'] : $this->price;
+    }
 
     /*
     |--------------------------------------------------------------------------

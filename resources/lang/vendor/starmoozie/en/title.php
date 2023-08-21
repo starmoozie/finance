@@ -26,6 +26,10 @@ return [
     'stock' => 'Stock',
     'qty' => 'Quantity',
     'total_price' => 'Total Price',
+    'old_stock' => 'Old Stock',
+    'new_stock' => 'New Stock',
+    'old_price' => 'Old Price',
+    'new_price' => 'New Price',
 
     // Tabs
     'general' => 'General',
