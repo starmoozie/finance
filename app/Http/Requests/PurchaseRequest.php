@@ -15,7 +15,7 @@ class PurchaseRequest extends BaseRequest
             'details.*' => [
                 'required',
             ],
-            'details.*.nominal' => [
+            'details.*.sub_total' => [
                 'required',
                 'regex:/[0-9]{3,15}/',
             ]

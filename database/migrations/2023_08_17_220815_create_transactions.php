@@ -17,6 +17,8 @@ class CreateTransactions extends Migration
             $table->uuid('id')->primary();
             $table->string('created_by', 14)->index();
             $table->json('details');
+            $table->string('total_price', 15);
+            $table->string('total_qty', 15);
             $table->smallInteger('type')->default(0);
             $table->timestamps();
         });

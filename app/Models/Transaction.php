@@ -19,6 +19,8 @@ class Transaction extends BaseModel
         'created_by',
         'details',
         'type',
+        'total_price',
+        'total_qty'
     ];
     protected $casts    = [
         'details' => 'array'
@@ -136,6 +138,11 @@ class Transaction extends BaseModel
         }
 
         return $details;
+    }
+
+    public function getTotalPriceFormattedAttribute()
+    {
+        return rupiah($this->total_price);
     }
 
     /*

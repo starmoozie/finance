@@ -21,3 +21,14 @@ if (!function_exists('dateFormat')) {
         return \Carbon\Carbon::parse($date)->format('Y-m-d');
     }
 }
+
+if (!function_exists('rupiahToInteger')) {
+    /**
+     * Format rupiah to integer
+     * @param stringNumber $rupiah
+     */
+    function rupiahToInteger($rupiah)
+    {
+        return (int) str_replace('.', '', $rupiah);
+    }
+}

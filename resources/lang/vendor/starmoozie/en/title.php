@@ -30,6 +30,7 @@ return [
     'new_stock' => 'New Stock',
     'old_price' => 'Old Price',
     'new_price' => 'New Price',
+    'sub_total' => 'Sub Total',
 
     // Tabs
     'general' => 'General',

@@ -39,7 +39,7 @@ trait Fields
                 'attributes' => ['required' => 'required']
             ],
             [
-                'name'       => 'nominal',
+                'name'       => 'sub_total',
                 'label'      => __('starmoozie::title.total_price'),
                 'prefix'     => 'Rp',
                 'wrapper'    => ['class' => 'form-group col-md-4'],
