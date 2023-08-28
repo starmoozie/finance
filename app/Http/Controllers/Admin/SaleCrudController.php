@@ -19,6 +19,9 @@ class SaleCrudController extends BaseCrudController
     protected $scopes  = [
         'sale'
     ];
+    protected $orders  = [
+        ['name' => 'updated_at', 'type' => 'desc']
+    ];
 
     protected function setupCreateOperation()
     {

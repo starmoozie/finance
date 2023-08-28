@@ -14,6 +14,9 @@ class ExpenseCrudController extends BaseCrudController
     protected $scopes  = [
         'expense'
     ];
+    protected $orders  = [
+        ['name' => 'updated_at', 'type' => 'desc']
+    ];
 
     /**
      * Store a newly created resource in the database.
@@ -22,8 +25,29 @@ class ExpenseCrudController extends BaseCrudController
      */
     public function store()
     {
-        $this->addRequest($this->crud->getRequest(), ['created_by' => starmoozie_user()->id]);
+        $request   = $this->crud->getRequest();
+
+        $this->addRequest($this->crud->getRequest(), [...['created_by' => starmoozie_user()->id], ...$this->sumTotalPrice($request->details)]);
 
         return $this->traitStore();
+    }
+
+    /**
+     * Update the specified resource in the database.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update()
+    {
+        $request   = $this->crud->getRequest();
+
+        $this->addRequest($request, $this->sumTotalPrice($request->details));
+
+        return $this->traitUpdate();
+    }
+
+    protected function sumTotalPrice($details)
+    {
+        return ['total_price' => array_sum(array_column($details, 'sub_total'))];
     }
 }

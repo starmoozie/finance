@@ -1,4 +1,9 @@
 <!-- text input -->
+<?php
+    $split           = explode('[', $field['name']);
+    $name            = str_replace("]", '', end($split));
+    $saleRoute = request()->segment(2) === 'sale';
+?>
 
 @include('crud::fields.inc.wrapper_start')
     <label>{!! $field['label'] !!}</label>
@@ -23,25 +28,32 @@
 @include('crud::fields.inc.wrapper_end')
 
 @push('crud_fields_scripts')
-    @loadOnce('bpFieldInitText')
     @loadOnce('packages/masking/jquery.mask.js')
+@endpush
+
+@push('crud_fields_scripts')
+    @loadOnce('bpFieldInitText')
         <script>
             function bpFieldInitText(element) {
                 const indexNumber  = element.attr('data-row-number') - 1;
-                const format       = "#.##0";
+                const name         = "{!! $name !!}";
+                const numberFormat = "#.##0";
+                const saleRoute    = "{!! $saleRoute !!}";
 
-                $(`input[name='details[${indexNumber}][qty]']`)
-                .on('input', function(e) {
-                    let subTotal = e.target.value.replace(/\./g, '');
-                    let price    = $(`input[name='details[${indexNumber}][price]']`).val();
-                    price = price.replace(/\./g, '');
+                if (saleRoute) {
+                    $(`input[name='details[${indexNumber}][${name}]']`)
+                    .on('input', function(e) {
+                        let subTotal = e.target.value.replace(/\./g, '');
+                        let price    = $(`input[name='details[${indexNumber}][price]']`).val();
+                        price = price.replace(/\./g, '');
 
-                    // Set subTotal current field indexNumber
-                    $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(price * subTotal));
-                });
+                        // Set subTotal current field indexNumber
+                        $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(price * subTotal));
+                    });
+                }
 
                 // Set masked input value
-                $(`[name='details[${indexNumber}][qty]']`).mask(format, {reverse: true});
+                $(`[name='details[${indexNumber}][${name}]']`).mask(numberFormat, { reverse: true });
             }
         </script>
     @endLoadOnce

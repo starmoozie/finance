@@ -16,6 +16,9 @@ class PurchaseCrudController extends BaseCrudController
     protected $scopes  = [
         'purchase'
     ];
+    protected $orders  = [
+        ['name' => 'updated_at', 'type' => 'desc']
+    ];
 
     /**
      * Store a newly created resource in the database.

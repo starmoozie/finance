@@ -23,7 +23,7 @@ trait Fields
     {
         return [
             [
-                'name'       => 'nominal',
+                'name'       => 'sub_total',
                 'label'      => __('starmoozie::title.nominal'),
                 'prefix'     => 'Rp',
                 'wrapper'    => ['class' => 'form-group col-md-4'],
