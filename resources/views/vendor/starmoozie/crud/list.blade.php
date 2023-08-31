@@ -74,6 +74,7 @@
                 {{-- Table columns --}}
                 @foreach ($crud->columns() as $column)
                   <th
+                    class="text-{{ $column['position'] ?? 'left' }}"
                     data-orderable="{{ var_export($column['orderable'], true) }}"
                     data-priority="{{ $column['priority'] }}"
                     {{--
@@ -133,8 +134,9 @@
                 <tr>
                   <th></th>
                   <th></th>
-                  <th></th>
-                  <th></th>
+                  <th class="text-right"></th>
+                  <th class="text-right"></th>
+                  <th class="text-right"></th>
                 </tr>
               </tfoot>
             @endif

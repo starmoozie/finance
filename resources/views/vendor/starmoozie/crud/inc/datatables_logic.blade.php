@@ -264,19 +264,22 @@
 
                 if (is_report) {
                     let api = this.api();
-                    let rowNumber = [3];
+                    let rowNumber = [4];
 
                     let balance = 0;
                     let amount  = 0;
                     for (let index = 1; index <= rowNumber[rowNumber.length - 1]; index++) {
                         if (index < rowNumber[0]) {
                             amount  = sumRow(api, index);
-                            balance = index === 1 ? amount : balance - amount;
+                            balance = index === 2 ? amount : balance - amount;
                         } else {
+                            console.log(index)
                             amount = balance;
                         }
 
-                        $(api.column(index).footer()).html(formatRupiah(amount));
+                        if (index > 1) {
+                            $(api.column(index).footer()).html(formatRupiah(amount));
+                        }
                     }
                 }
             },

@@ -12,6 +12,6 @@ class ReportCrudController extends BaseCrudController
     protected $model   = Model::class;
     protected $request = Request::class;
     protected $orders  = [
-        ['name' => 'updated_at', 'type' => 'desc']
+        ['name' => 'created_at', 'type' => 'asc']
     ];
 }

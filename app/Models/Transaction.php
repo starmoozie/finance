@@ -75,16 +75,23 @@ class Transaction extends BaseModel
 
     public function scopeSplitDebitCredit($query)
     {
-        return $query->selectRaw("(CASE WHEN type = 1 THEN created_at ELSE NULL END) as aa");
+        return $query->select([
+            "*",
+            \DB::raw('
+                CASE WHEN type = 1 THEN total_price ELSE 0 END as debit,
+                CASE WHEN type != 1 THEN total_price ELSE 0 END as credit,
+                SUM(CASE WHEN type = 1 THEN total_price ELSE 0 END - CASE WHEN type != 1 THEN total_price ELSE null END) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as balance'
+            )
+        ]);
     }
 
-    function scopeSelectByCreatedRange($query, $dates)
+    public function scopeSelectByCreatedRange($query, $dates)
     {
         return $query->whereDate('created_at', '>=', dateFormat($dates->from))
             ->whereDate('created_at', '<=', dateFormat($dates->to));
     }
 
-    function scopeSelectByNominalRange($query, $nominal_range)
+    public function scopeSelectByNominalRange($query, $nominal_range)
     {
         return $query
             ->get()
