@@ -58,39 +58,50 @@ class Transaction extends BaseModel
     |--------------------------------------------------------------------------
     */
 
+    /**
+     * Select only sale type
+     */
     public function scopeSale($query)
     {
         return $query->where('type', TransactionConstant::SALE);
     }
 
+    /**
+     * Select only expense type
+     */
     public function scopeExpense($query)
     {
         return $query->where('type', TransactionConstant::EXPENSE);
     }
 
+    /**
+     * Select only purchase type
+     */
     public function scopePurchase($query)
     {
         return $query->where('type', TransactionConstant::PURCHASE);
     }
 
-    public function scopeSplitDebitCredit($query)
+    /**
+     * Select only not sale type
+     */
+    public function scopeNotIncome($query)
     {
-        return $query->select([
-            "*",
-            \DB::raw('
-                CASE WHEN type = 1 THEN total_price ELSE 0 END as debit,
-                CASE WHEN type != 1 THEN total_price ELSE 0 END as credit,
-                SUM(CASE WHEN type = 1 THEN total_price ELSE 0 END - CASE WHEN type != 1 THEN total_price ELSE null END) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as balance'
-            )
-        ]);
+        return $query->where('type', '!=', TransactionConstant::SALE);
     }
 
+    /**
+     * Select by created_at range
+     */
     public function scopeSelectByCreatedRange($query, $dates)
     {
         return $query->whereDate('created_at', '>=', dateFormat($dates->from))
             ->whereDate('created_at', '<=', dateFormat($dates->to));
     }
 
+    /**
+     * Select by nominal range
+     */
     public function scopeSelectByNominalRange($query, $nominal_range)
     {
         return $query
@@ -102,6 +113,14 @@ class Transaction extends BaseModel
             });
     }
 
+    /**
+     * Select by created_at less or equal than x
+     */
+    public function scopeLteCreated($query, $created_at)
+    {
+        return $query->where('created_at', '<=', $created_at);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS
@@ -109,31 +128,24 @@ class Transaction extends BaseModel
     */
 
     /**
-     * Sum nominal as total_nominal
+     * Current debit
      */
-    public function getTotalNominalAttribute(): string
-    {
-        return rupiah(array_sum(array_column($this->details, 'nominal')));
-    }
-
-    /**
-     * Sum qty as total_qty
-     */
-    public function getTotalQtyAttribute(): string
-    {
-        return rupiah(array_sum(array_column($this->details, 'qty')));
-    }
-
     public function getDebitAttribute()
     {
         return $this->type === 1 ? $this->total_price_formatted : 0;
     }
 
+    /**
+     * Current credit
+     */
     public function getCreditAttribute()
     {
         return $this->type !== TransactionConstant::SALE ? $this->total_price_formatted : 0;
     }
 
+    /**
+     * Show details with product name
+     */
     public function getDetailsWithProductAttribute()
     {
         $products = $this->products;
@@ -147,9 +159,36 @@ class Transaction extends BaseModel
         return $details;
     }
 
+    /**
+     * Total price formatted
+     */
     public function getTotalPriceFormattedAttribute()
     {
         return rupiah($this->total_price);
+    }
+
+    /**
+     * Total price of debit where created less or equal than current created
+     */
+    public function getLastTotalDebitAttribute()
+    {
+        return Self::lteCreated($this->created_at)->sale()->sum('total_price');
+    }
+
+    /**
+     * Total price of credit where created less or equal than current created
+     */
+    public function getLastTotalCreditAttribute()
+    {
+        return Self::lteCreated($this->created_at)->notIncome()->sum('total_price');
+    }
+
+    /**
+     * Current balance
+     */
+    public function getBalanceAttribute()
+    {
+        return rupiah($this->last_total_debit - $this->last_total_credit);
     }
 
     /*

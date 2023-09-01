@@ -13,12 +13,7 @@ trait Columns
     {
         $this->crud->column('created_at')
             ->label(__('starmoozie::title.created'))
-            ->type('date')
-            ->wrapper([
-                'element' => 'div',
-                'class'   => 'text-center'
-            ])
-            ->position('center');
+            ->type('datetime');
 
         $this->crud->column('debit')
             ->label(__('starmoozie::title.debit'))
