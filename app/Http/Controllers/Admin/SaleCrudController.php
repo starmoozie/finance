@@ -8,7 +8,6 @@ use App\Models\{
 };
 use App\Http\Requests\SaleRequest as Request;
 use App\Constants\TransactionConstant;
-use Starmoozie\CRUD\app\Library\Widget;
 
 class SaleCrudController extends BaseCrudController
 {
@@ -22,12 +21,6 @@ class SaleCrudController extends BaseCrudController
     protected $orders  = [
         ['name' => 'updated_at', 'type' => 'desc']
     ];
-
-    protected function setupCreateOperation()
-    {
-        parent::setupCreateOperation();
-        Widget::add()->type('script')->content('assets/js/pages/product/form.js');
-    }
 
     /**
      * Store a newly created resource in the database.

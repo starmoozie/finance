@@ -46,6 +46,25 @@ trait Fields
                 'attributes' => ['required' => 'required']
             ],
             [
+                'name'    => 'type_profit',
+                'label'   => __('starmoozie::title.type_profit'),
+                'type'    => 'radio',
+                'options' => [
+                    0 => __('starmoozie::title.percent'),
+                    1 => __('starmoozie::title.money')
+                ],
+                'wrapper' => ['class' => 'form-group col-md-4'],
+                'default' => 1,
+                'inline'  => true
+            ],
+            [
+                'name'       => 'profit',
+                'label'      => __('starmoozie::title.profit'),
+                'type'       => 'number',
+                'wrapper'    => ['class' => 'form-group col-md-4'],
+                'attributes' => ['required' => 'required', 'step' => '.01']
+            ],
+            [
                 'name'    => 'note',
                 'label'   => __('starmoozie::title.note'),
                 'type'    => 'textarea'

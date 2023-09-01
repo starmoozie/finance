@@ -38,4 +38,9 @@ return [
     // Tabs
     'general' => 'General',
     'login_information' => 'Login Information',
+
+    'type_profit' => 'Profit Type',
+    'profit'  => 'Profit',
+    'percent' => 'Percent (%)',
+    'money' => 'Money (Rp)',
 ];

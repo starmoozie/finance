@@ -6,6 +6,7 @@ use App\Models\Transaction as Model;
 use App\Models\Product;
 use App\Http\Requests\PurchaseRequest as Request;
 use App\Constants\TransactionConstant;
+use Starmoozie\CRUD\app\Library\Widget;
 
 class PurchaseCrudController extends BaseCrudController
 {
@@ -112,6 +113,8 @@ class PurchaseCrudController extends BaseCrudController
             $final_array[$detail['product_id']]['removed']     = !eval("return {$request_qty} {$calculate_qty};");
             $final_array[$detail['product_id']]['sub_total']   = $detail['sub_total'];
             $final_array[$detail['product_id']]['request_qty'] = rupiahToInteger($detail['qty']);
+            $final_array[$detail['product_id']]['type_profit'] = $detail['type_profit'];
+            $final_array[$detail['product_id']]['profit']      = $detail['profit'];
         }
 
         return $final_array;
@@ -140,9 +143,14 @@ class PurchaseCrudController extends BaseCrudController
 
             $product?->update([
                 'stock'   => (int) eval("return {$product->stock} + {$detail['qty']};"), // hitung sesuai rumus string
-                'price'   => (int) $detail['new_price'],
+                'price'   => (int) $detail['new_price'] + $this->calculateProfit($detail),
                 'details' => $product->details ? [...$product->details, ...[$new_details]] : [...[$new_details]]
             ]);
         }
+    }
+
+    private function calculateProfit($detail)
+    {
+        return filter_var($detail['type_profit'], FILTER_VALIDATE_BOOLEAN) ? (int) $detail['profit'] : ($detail['profit'] / 100) * $detail['new_price'];
     }
 }
