@@ -26,3 +26,6 @@
 ## Default User
 - Email `starmoozie@gmail.com`
 - Password `password`
+
+## Note
+- Aplikasi ini dibuat memang tidak ada fitur print / export data, karena sudah ada aplikasi ini sebagai pengganti kertas
