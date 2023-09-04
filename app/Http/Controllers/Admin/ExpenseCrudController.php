@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Transaction as Model;
 use App\Http\Requests\ExpenseRequest as Request;
+use App\Constants\TransactionConstant;
 
 class ExpenseCrudController extends BaseCrudController
 {
@@ -27,7 +28,10 @@ class ExpenseCrudController extends BaseCrudController
     {
         $request   = $this->crud->getRequest();
 
-        $this->addRequest($this->crud->getRequest(), [...['created_by' => starmoozie_user()->id], ...$this->sumTotalPrice($request->details)]);
+        $this->addRequest($this->crud->getRequest(), [
+            ...['created_by' => starmoozie_user()->id, 'type' => TransactionConstant::EXPENSE],
+            ...$this->sumTotalPrice($request->details)
+        ]);
 
         return $this->traitStore();
     }

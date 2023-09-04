@@ -62,14 +62,16 @@ class DashboardController extends Controller
             ->sumEachType()
             ->orderBy('type')
             ->get();
+        $size = 12 / ($transactions->count() + 1);
 
         return [
             ...[$this->mapCardWidgets(
                 'balance',
                 'primary',
-                $this->calculateBalance($transactions)
+                $this->calculateBalance($transactions),
+                $size
             )],
-            ...$this->handleEloquentToWidgets($transactions)
+            ...$this->handleEloquentToWidgets($transactions, $size)
         ];
     }
 
@@ -87,22 +89,27 @@ class DashboardController extends Controller
     /**
      * Mapping eloquent query to widgets
      */
-    private function handleEloquentToWidgets($transactions): array
+    private function handleEloquentToWidgets($transactions, $size): array
     {
-        return $transactions->map(function($transaction) {
+        return $transactions->map(function($transaction) use ($size) {
             $constant = collect(TransactionConstant::ALL)->where('value', $transaction->type)->first();
 
-            return $this->mapCardWidgets($constant['label'], $constant['color'], $transaction->total_price);
+            return $this->mapCardWidgets(
+                $constant['label'],
+                $constant['color'],
+                $transaction->total_price,
+                $size
+            );
         })->toArray();
     }
 
     /**
      * Mapping widget attributes
      */
-    private function mapCardWidgets($label, $color, $value): array
+    private function mapCardWidgets($label, $color, $value, $size): array
     {
         return [
-            'wrapper'       => ['class' => 'col-md-3'],
+            'wrapper'       => ['class' => "col-md-{$size}"],
             'class'         => "card shadow mb-2",
             'type'          => 'progress_white',
             'progress'      => 100,
