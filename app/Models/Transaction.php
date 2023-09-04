@@ -121,6 +121,25 @@ class Transaction extends BaseModel
         return $query->where('created_at', '<=', $created_at);
     }
 
+    /**
+     * Select by current month
+     */
+    public function scopeSelectCurrentMonth($query)
+    {
+        return $query->whereMonth('created_at', Carbon::now()->month);
+    }
+
+    /**
+     * Sum each type
+     */
+    public function scopeSumEachType($query)
+    {
+        return $query->groupBy('type')->select([
+            'type',
+            \DB::raw('SUM(total_price) as total_price'),
+        ]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS

@@ -43,4 +43,7 @@ return [
     'profit'  => 'Profit',
     'percent' => 'Percent (%)',
     'money' => 'Money (Rp)',
+
+    // Hint
+    'hint_amount_dashboard' => 'Amount in this month.',
 ];
