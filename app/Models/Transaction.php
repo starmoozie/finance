@@ -151,7 +151,7 @@ class Transaction extends BaseModel
      */
     public function getDebitAttribute()
     {
-        return $this->type === 1 ? $this->total_price_formatted : 0;
+        return $this->type === TransactionConstant::SALE ? $this->total_price_formatted : 0;
     }
 
     /**
