@@ -30,7 +30,10 @@ trait Fields
                 'entity'     => 'products',
                 'label'      => __('starmoozie::title.product'),
                 'wrapper'    => ['class' => 'form-group col-md-4'],
-                'attributes' => ['required' => 'required']
+                'attributes' => ['required' => 'required'],
+                'ajax'       => true,
+                'inline_create' => ['entity' => 'product'],
+                'minimum_input_length' => 0
             ],
             [
                 'name'       => 'qty',

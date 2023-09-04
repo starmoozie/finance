@@ -6,4 +6,5 @@ trait Main
 {
     use Fields, Fetch, Columns, Filters, Shows;
     use \App\Traits\AddRemoveRequest;
+    use \Starmoozie\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
 }
