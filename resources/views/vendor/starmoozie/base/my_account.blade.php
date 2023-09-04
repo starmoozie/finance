@@ -53,7 +53,7 @@
 
                 {!! csrf_field() !!}
 
-                <div class="card padding-10">
+                <div class="card padding-10 shadow">
 
                     <div class="card-header">
                         {{ trans('starmoozie::base.update_account_info') }}
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-outline-success shadow-sm btn-sm"><i class="la la-save"></i> {{ trans('starmoozie::base.save') }}</button>
+                        <button type="submit" class="btn btn-outline-success shadow btn-sm"><i class="la la-save"></i> {{ trans('starmoozie::base.save') }}</button>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
 
                 {!! csrf_field() !!}
 
-                <div class="card padding-10">
+                <div class="card padding-10 shadow">
 
                     <div class="card-header">
                         {{ trans('starmoozie::base.change_password') }}
@@ -133,7 +133,7 @@
                     </div>
 
                     <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-success shadow-sm btn-sm"><i class="la la-save"></i> {{ trans('starmoozie::base.change_password') }}</button>
+                            <button type="submit" class="btn btn-outline-success shadow btn-sm"><i class="la la-save"></i> {{ trans('starmoozie::base.change_password') }}</button>
                     </div>
 
                 </div>

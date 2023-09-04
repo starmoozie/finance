@@ -442,13 +442,13 @@
                 const actionButtons = $(actionCell).find('a.btn.line');
                 // Wrap the cell with the component needed for the dropdown
                 actionCell.wrapInner('<div class="nav-item dropdown"></div>');
-                actionCell.wrapInner('<div class="dropdown-menu dropdown-menu-left"></div>');
+                actionCell.wrapInner('<div class="dropdown-menu dropdown-menu-left shadow"></div>');
                 // Prepare buttons as dropdown items
                 actionButtons.map((index, action) => {
                     $(action).addClass('dropdown-item').removeClass('btn btn-sm btn-link shadow-sm');
                     $(action).find('i').addClass('me-2 text-primary');
                 });
-                actionCell.prepend('<a class="btn btn-sm px-2 py-1 btn-outline-primary dropdown-toggle actions-buttons-column" href="#" data-toggle="dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">{{ trans('starmoozie::crud.actions') }}</a>');
+                actionCell.prepend('<a class="btn btn-sm shadow px-2 py-1 btn-outline-primary dropdown-toggle actions-buttons-column" href="#" data-toggle="dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">{{ trans('starmoozie::crud.actions') }}</a>');
             });
         }
     }

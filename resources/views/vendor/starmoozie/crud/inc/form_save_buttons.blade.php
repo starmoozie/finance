@@ -6,15 +6,15 @@
             <div class="btn-group" role="group">
         @endif
 
-        <button type="submit" class="btn btn-outline-primary btn-sm shadow-sm">
+        <button type="submit" class="btn btn-outline-primary btn-sm shadow">
             <span class="la la-save" role="presentation" aria-hidden="true"></span> &nbsp;
             <span data-value="{{ $saveAction['active']['value'] }}">{{ $saveAction['active']['label'] }}</span>
         </button>
 
         <div class="btn-group" role="group">
             @if(!empty($saveAction['options']))
-                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary shadow-sm btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span><span class="sr-only">&#x25BC;</span></button>
-                <div class="dropdown-menu shadow-sm" aria-labelledby="btnGroupDrop1">
+                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary shadow btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span><span class="sr-only">&#x25BC;</span></button>
+                <div class="dropdown-menu shadow" aria-labelledby="btnGroupDrop1">
                     @foreach( $saveAction['options'] as $value => $label)
                     <a class="dropdown-item" href="javascript:void(0);" data-value="{{ $value }}">{{ $label }}</a>
                     @endforeach

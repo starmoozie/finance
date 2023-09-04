@@ -60,15 +60,16 @@ class DashboardController extends Controller
     {
         $transactions = Transaction::selectCurrentMonth()
             ->sumEachType()
+            ->orderBy('type')
             ->get();
 
         return [
-            ...$this->handleEloquentToWidgets($transactions),
             ...[$this->mapCardWidgets(
                 'balance',
                 'primary',
                 $this->calculateBalance($transactions)
-            )]
+            )],
+            ...$this->handleEloquentToWidgets($transactions)
         ];
     }
 
@@ -102,7 +103,7 @@ class DashboardController extends Controller
     {
         return [
             'wrapper'       => ['class' => 'col-md-3'],
-            'class'         => "card shadow-sm mb-2",
+            'class'         => "card shadow mb-2",
             'type'          => 'progress_white',
             'progress'      => 100,
             'progressClass' => "progress-bar bg-{$color}",
