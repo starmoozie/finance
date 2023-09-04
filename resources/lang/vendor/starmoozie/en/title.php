@@ -31,9 +31,9 @@ return [
     'old_price' => 'Old Price',
     'new_price' => 'New Price',
     'sub_total' => 'Sub Total',
-    'debit'     => 'Debit',
-    'credit'    => 'Credit',
-    'balance'   => 'Balance',
+    'debit'     => 'Sales',
+    'credit'    => 'Expenses',
+    'balance'   => 'Income',
 
     // Tabs
     'general' => 'General',
