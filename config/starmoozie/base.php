@@ -74,7 +74,7 @@ return [
     // ------
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => "<span style='text-shadow: 3px 4px 7px rgba(101, 101, 102); font-size: 30px;' class='text-primary'><b>".ENV('APP_NAME')."</b></span>",
+    'project_logo'   => "<span style='text-shadow: 2px 3px 5px rgba(0,0,0,0.5); font-size: 30px;' class='text-primary'><b>".ENV('APP_NAME')."</b></span>",
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,
