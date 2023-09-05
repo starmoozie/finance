@@ -18,6 +18,10 @@
 - Report
 - Product
 
+## Requirement
+- >= php@8.1
+- MySQL >= 8.0 ( current development )
+
 ## Install
 - `composer install`
 - `php artisan starmoozie:install`
