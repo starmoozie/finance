@@ -2,6 +2,8 @@
 
 - Aplikasi toko sederhana
 
+![image info](./images/dashboard.png)
+
 ## Fitur
 - Pencatatan keluar masuk barang
 - Logging all crud
