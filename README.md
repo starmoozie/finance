@@ -4,6 +4,7 @@
 
 ## Fitur
 - Pencatatan keluar masuk barang
+- Logging all crud
 
 ## Default Menu
 - Permission
