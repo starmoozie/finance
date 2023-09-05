@@ -19,7 +19,7 @@
 - Product
 
 ## Requirement
-- >= php@8.1
+- PHP >= php@8.1
 - MySQL >= 8.0 ( current development )
 
 ## Install
