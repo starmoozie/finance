@@ -16,6 +16,7 @@
 - Sale
 - Expense
 - Report
+- Product
 
 ## Install
 - `composer install`
