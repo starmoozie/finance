@@ -133,7 +133,7 @@
               <tfoot>
                 <tr>
                   <th></th>
-                  <th></th>
+                  <th>{{ __('starmoozie::title.total') }}</th>
                   <th class="text-right"></th>
                   <th class="text-right"></th>
                   <th class="text-right"></th>
