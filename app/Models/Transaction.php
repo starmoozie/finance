@@ -140,6 +140,17 @@ class Transaction extends BaseModel
         ]);
     }
 
+    /**
+     * Count each type
+     */
+    public function scopeCountEachType($query)
+    {
+        return $query->groupBy('type')->select([
+            'type',
+            \DB::raw('COUNT(id) as total'),
+        ]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS

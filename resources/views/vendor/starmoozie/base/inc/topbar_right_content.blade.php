@@ -1,4 +1,5 @@
 <!-- This file is used to store topbar (right) items -->
+{{--
 <?php
     $count = isset($data) ? $data->count() : 0;
 ?>
@@ -20,3 +21,4 @@
         </div>
     @endif
 </li>
+--}}

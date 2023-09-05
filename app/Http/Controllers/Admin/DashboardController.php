@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Charts\WeeklyTransactionsChartController;
 use Starmoozie\CRUD\app\Library\Widget;
 use App\Constants\TransactionConstant;
 use Illuminate\Routing\Controller;
@@ -37,7 +38,7 @@ class DashboardController extends Controller
             ->to('before_content')
             ->class('row')
             ->type('div')
-            ->content($this->widgets());
+            ->content([...$this->widgets(), ...$this->weeklyTransactionsCharts()]);
 
         return view(starmoozie_view('dashboard'), $this->data);
     }
@@ -62,6 +63,7 @@ class DashboardController extends Controller
             ->sumEachType()
             ->orderBy('type')
             ->get();
+
         $size = 12 / ($transactions->count() + 1);
 
         return [
@@ -117,6 +119,21 @@ class DashboardController extends Controller
             'value'         => rupiah($value),
             'description'   => __("starmoozie::title.{$label}"),
             'hint'          => __("starmoozie::title.hint_amount_dashboard")
+        ];
+    }
+
+    private function weeklyTransactionsCharts()
+    {
+        return [
+            [
+                'type'       => 'chart',
+                'controller' => WeeklyTransactionsChartController::class,
+                'class'      => 'card mt-4 shadow',
+                'wrapper'    => ['class'=> 'col-md-12'] ,
+                'content'    => [
+                    'header' => __('starmoozie::title.hint_weekly_transactions'),
+                ],
+            ]
         ];
     }
 }

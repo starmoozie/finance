@@ -46,4 +46,5 @@ return [
 
     // Hint
     'hint_amount_dashboard' => 'Amount in this month.',
+    'hint_weekly_transactions' => 'Weekly Transactions',
 ];
