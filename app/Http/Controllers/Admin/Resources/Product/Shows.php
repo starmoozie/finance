@@ -14,12 +14,14 @@ trait Shows
     {
         $this->setColumns();
 
-        $this->crud->column('transactions')
+        $this->crud->column('purchases')
+            ->label(__('starmoozie::title.purchase_hitories'))
             ->type('view')
-            ->view('starmoozie::crud.pages.product.transaction');
+            ->view('starmoozie::crud.pages.product.purchase_histories');
 
-        $this->crud->column('histories')
+        $this->crud->column('sales')
+            ->label(__('starmoozie::title.sale_hitories'))
             ->type('view')
-            ->view('starmoozie::crud.pages.product.history');
+            ->view('starmoozie::crud.pages.product.sale_histories');
     }
 }

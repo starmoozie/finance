@@ -22,27 +22,23 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{ __('starmoozie::title.old_stock') }}</th>
-                    <th>{{ __('starmoozie::title.new_stock') }}</th>
-                    <th>{{ __('starmoozie::title.old_price') }}</th>
-                    <th>{{ __('starmoozie::title.new_price') }}</th>
+                    <th>{{ __('starmoozie::title.qty') }}</th>
+                    <th>{{ __('starmoozie::title.total_price') }}</th>
+                    <th>{{ __('starmoozie::title.price_item') }}</th>
                     <th>{{ __('starmoozie::title.created') }}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($column['value']->sortByDesc('created_at')->values() as $key => $history)
+                @foreach($column['value'] as $key => $purchase)
                     <?php
-                        $old = $history->properties['old'];
-                        $new = $history->properties['attributes'];
+                        $value = collect($purchase->details)->where('product_id', $entry->id)->first();
                     ?>
-
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ rupiah($old['stock']) }}</td>
-                        <td>{{ rupiah($new['stock']) }}</td>
-                        <td>{{ rupiah($old['price']) }}</td>
-                        <td>{{ rupiah($new['price']) }}</td>
-                        <td>{{ $history->created_at }}</td>
+                        <td>{{ rupiah($value['qty']) }}</td>
+                        <td>{{ rupiah($value['sub_total']) }}</td>
+                        <td>{{ rupiah($value['price']) }}</td>
+                        <td>{{ $purchase->created_at }}</td>
                     </tr>
                 @endforeach
             </tbody>

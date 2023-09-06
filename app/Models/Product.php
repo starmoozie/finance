@@ -50,6 +50,16 @@ class Product extends BaseModel
         );
     }
 
+    public function purchases()
+    {
+        return $this->transactions()->purchase();
+    }
+
+    public function sales()
+    {
+        return $this->transactions()->sale();
+    }
+
     public function histories()
     {
         return $this->hasMany(

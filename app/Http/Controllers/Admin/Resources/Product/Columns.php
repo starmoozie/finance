@@ -19,7 +19,7 @@ trait Columns
             ->label(__('starmoozie::base.name'));
 
         $this->crud->column('current_price')
-            ->label(__('starmoozie::title.price'));
+            ->label(__('starmoozie::title.sell_price'));
 
         $this->crud->column('current_stock')
             ->label(__('starmoozie::title.stock'));

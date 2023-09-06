@@ -34,6 +34,14 @@ return [
     'debit'     => 'Sales',
     'credit'    => 'Expenses',
     'balance'   => 'Income',
+    'buy_price' => 'Buy Price',
+    'sell_price'=> 'Sell Price',
+    'purchase_hitories' => 'Purchase Histories',
+    'buy_item' => 'Buy Price /Item',
+    'sell_item' => 'Sell Price /Item',
+    'profit_item' => 'Profit /Item',
+    'price_item' => 'Price /Item',
+    'sale_hitories' => 'Sale Histoies',
 
     // Tabs
     'general' => 'General',
