@@ -49,7 +49,7 @@
 
         <table
           id="crudTable"
-          class="table table-bordered table-hover rounded shadow mt-2"
+          class="table table-bordered table-hover shadow mt-2 round"
           data-has-details-row="{{ $crud->getOperationSetting('detailsRow') ?? 0 }}"
           data-has-bulk-actions="{{ $crud->getOperationSetting('bulkActions') ?? 0 }}"
           data-has-line-buttons-as-dropdown="{{ (int) $crud->getOperationSetting('lineButtonsAsDropdown') }}"

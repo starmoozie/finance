@@ -34,7 +34,7 @@
     @include('crud::inc.show_fields', ['fields' => $crud->getFieldsWithoutATab()])
 @endif
 
-<div class="tab-container {{ $horizontalTabs ? '' : 'container'}} mb-2">
+<div class="tab-container shadow round {{ $horizontalTabs ? '' : 'container'}} mb-4">
 
     <div class="nav-tabs-custom {{ $horizontalTabs ? '' : 'row'}}" id="form_tabs">
         <ul class="nav {{ $horizontalTabs ? 'nav-tabs' : 'flex-column nav-pills'}} {{ $horizontalTabs ? '' : 'col-md-3' }}" role="tablist">
@@ -51,7 +51,7 @@
             @endforeach
         </ul>
 
-        <div class="tab-content p-0 {{$horizontalTabs ? '' : 'col-md-9'}}">
+        <div class="tab-content p-0 {{$horizontalTabs ? '' : 'col-md-9'}}" style="border-bottom-left-radius: 1em; border-bottom-right-radius: 1em;">
 
             @foreach ($crud->getTabs() as $k => $tab)
             <div role="tabpanel" class="tab-pane {{ isset($tabWithError) ? ($tab == $tabWithError ? ' active' : '') : ($k == 0 ? ' active' : '') }}" id="tab_{{ Str::slug($tab) }}">

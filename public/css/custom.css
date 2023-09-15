@@ -1,0 +1,23 @@
+.btn, .card, .round, .form-control {
+    border-radius: 1em;
+}
+
+input,
+select {
+    background: #fcfcfc;
+    padding: 7px 25px;
+    border: 0 none;
+    font: bold 12px Arial, Helvetica, Sans-serif;
+    color: #6a6f75;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease-out 0s;
+    -moz-transition: all 0.7s ease-out 0s;
+    -ms-transition: all 0.7s ease-out 0s;
+    -o-transition: all 0.7s ease-out 0s;
+    transition: all 0.7s ease-out 0s;
+}

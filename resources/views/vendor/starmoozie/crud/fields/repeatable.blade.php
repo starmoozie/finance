@@ -67,7 +67,7 @@
 @if (isset($field['hint']))
     <p class="help-block text-muted text-sm">{!! $field['hint'] !!}</p>
 @endif
-<button type="button" class="btn btn-outline-info btn-sm ml-1 mt-1 add-repeatable-element-button">+ {{ $field['new_item_label'] ?? trans('starmoozie::crud.new_item') }}</button>
+<button type="button" class="btn btn-outline-info btn-sm ml-1 mt-2 mb-n2 add-repeatable-element-button shadow">+ {{ $field['new_item_label'] ?? trans('starmoozie::crud.new_item') }}</button>
 
 @include('crud::fields.inc.wrapper_end')
 

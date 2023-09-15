@@ -44,7 +44,7 @@ return [
     'styles' => [
         'packages/starmoozie/base/css/bundle.css', // has primary color electric purple (starmoozie default)
         // 'packages/starmoozie/base/css/blue-bundle.css', // has primary color blue
-        // 'css/custom.css',
+        'css/custom.css',
 
         // Here's what's inside the bundle:
         // 'packages/@digitallyhappy/backstrap/css/style.min.css',

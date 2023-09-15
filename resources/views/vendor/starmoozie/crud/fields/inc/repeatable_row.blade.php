@@ -2,9 +2,9 @@
 <div class="d-none">
 @endif
 
-<div class="col-md-12 well repeatable-element row m-1 p-2" data-repeatable-identifier="{{ $field['name'] }}">
+<div class="col-md-12 well shadow-sm round repeatable-element row m-1 mb-3 p-2" data-repeatable-identifier="{{ $field['name'] }}">
     @if (isset($field['subfields']) && is_array($field['subfields']) && count($field['subfields']))
-    <div class="controls">
+    <div class="controls round">
         <button type="button" class="close delete-element"><span aria-hidden="true">×</span></button>
         @if ($field['reorder'])
         <button type="button" class="close move-element-up">
