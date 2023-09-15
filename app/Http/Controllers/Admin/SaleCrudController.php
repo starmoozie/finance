@@ -16,7 +16,8 @@ class SaleCrudController extends BaseCrudController
     protected $model   = Model::class;
     protected $request = Request::class;
     protected $scopes  = [
-        'sale'
+        'sale',
+        'defaultSelectColumnsList'
     ];
     protected $orders  = [
         ['name' => 'updated_at', 'type' => 'desc']

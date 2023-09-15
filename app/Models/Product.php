@@ -75,6 +75,14 @@ class Product extends BaseModel
     |--------------------------------------------------------------------------
     */
 
+    /**
+     * Default selected columns in list
+     */
+    public function scopeDefaultSelectColumnsList($query)
+    {
+        return $query->select(['id', 'name', 'created_by', 'stock', 'price']);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS

@@ -15,7 +15,8 @@ class PurchaseCrudController extends BaseCrudController
     protected $model   = Model::class;
     protected $request = Request::class;
     protected $scopes  = [
-        'purchase'
+        'purchase',
+        'defaultSelectColumnsList'
     ];
     protected $orders  = [
         ['name' => 'updated_at', 'type' => 'desc']

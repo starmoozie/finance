@@ -13,7 +13,8 @@ class ExpenseCrudController extends BaseCrudController
     protected $model   = Model::class;
     protected $request = Request::class;
     protected $scopes  = [
-        'expense'
+        'expense',
+        'defaultSelectColumnsList'
     ];
     protected $orders  = [
         ['name' => 'updated_at', 'type' => 'desc']

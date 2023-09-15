@@ -25,6 +25,11 @@ class Transaction extends BaseModel
     protected $casts    = [
         'details' => 'array'
     ];
+    protected $defaultListColumns = [
+        'id',
+        'created_at',
+        'total_price',
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -149,6 +154,30 @@ class Transaction extends BaseModel
             'type',
             \DB::raw('COUNT(id) as total'),
         ]);
+    }
+
+    /**
+     * Default selected columns
+     */
+    public function scopeDefaultSelectColumns($query)
+    {
+        return $query->select($this->defaultListColumns);
+    }
+
+    /**
+     * Default selected columns in list
+     */
+    public function scopeDefaultSelectColumnsList($query)
+    {
+        return $query->defaultSelectColumns()->addSelect(['created_by']);
+    }
+
+    /**
+     * Default selected columns in list
+     */
+    public function scopeDefaultSelectListColumnsReport($query)
+    {
+        return $query->defaultSelectColumns()->addSelect(['type']);
     }
 
     /*

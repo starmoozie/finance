@@ -11,6 +11,9 @@ class ProductCrudController extends BaseCrudController
 
     protected $model   = Model::class;
     protected $request = Request::class;
+    protected $scopes  = [
+        'defaultSelectColumnsList'
+    ];
 
     /**
      * Store a newly created resource in the database.
