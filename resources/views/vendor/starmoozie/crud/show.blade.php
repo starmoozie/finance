@@ -47,8 +47,8 @@
 				</div>
 			</div>
 	    @endif
-	    <div class="card no-padding no-border shadow">
-			<table class="table table-striped mb-0">
+	    <div class="card no-padding no-border shadow round">
+			<table class="table table-hover mb-0 round">
 		        <tbody>
 		        @foreach ($crud->columns() as $column)
 		            <tr>
