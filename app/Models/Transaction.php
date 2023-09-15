@@ -187,19 +187,27 @@ class Transaction extends BaseModel
     */
 
     /**
-     * Current debit
+     * Current sale
      */
-    public function getDebitAttribute()
+    public function getSaleAttribute()
     {
         return $this->type === TransactionConstant::SALE ? $this->total_price_formatted : 0;
     }
 
     /**
-     * Current credit
+     * Current expense
      */
-    public function getCreditAttribute()
+    public function getExpenseAttribute()
     {
-        return $this->type !== TransactionConstant::SALE ? $this->total_price_formatted : 0;
+        return $this->type === TransactionConstant::EXPENSE ? $this->total_price_formatted : 0;
+    }
+
+    /**
+     * Current purchase
+     */
+    public function getPurchaseAttribute()
+    {
+        return $this->type === TransactionConstant::PURCHASE ? $this->total_price_formatted : 0;
     }
 
     /**

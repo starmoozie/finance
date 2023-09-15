@@ -137,6 +137,7 @@
                   <th class="text-right"></th>
                   <th class="text-right"></th>
                   <th class="text-right"></th>
+                  <th class="text-right"></th>
                 </tr>
               </tfoot>
             @endif

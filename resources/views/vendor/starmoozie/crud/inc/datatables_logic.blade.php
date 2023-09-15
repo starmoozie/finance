@@ -264,7 +264,7 @@
 
                 if (is_report) {
                     let api = this.api();
-                    let rowNumber = [4];
+                    let rowNumber = [5];
 
                     let balance = 0;
                     let amount  = 0;
