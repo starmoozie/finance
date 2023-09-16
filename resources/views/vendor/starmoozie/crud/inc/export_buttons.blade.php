@@ -111,7 +111,7 @@
         }
       })
       $(".dt-buttons").appendTo($('#datatable_button_stack' ));
-      $('.dt-buttons').addClass('d-xs-block shadow')
+      $('.dt-buttons').addClass('d-xs-block shadow round')
                       .addClass('d-sm-inline-block')
                       .addClass('d-md-inline-block')
                       .addClass('d-lg-inline-block');

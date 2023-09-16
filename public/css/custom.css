@@ -2,6 +2,14 @@
     border-radius: 1em;
 }
 
+.dataTables_paginate ul li.paginate_button.page-item.active a {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.dataTables_paginate ul li.paginate_button.page-item.active a:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.23);
+}
+
 input,
 select {
     background: #fcfcfc;
