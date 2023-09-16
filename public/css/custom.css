@@ -17,6 +17,7 @@ a:hover {
 
 #crudTable_filter input:hover {
     transform: translate(0, -2px);
+    border-color: #7c69ef;
     filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
 
@@ -26,6 +27,7 @@ a:hover {
 
 #crudTable_length select:hover {
     transform: translate(0, -2px);
+    border-color: #7c69ef;
     filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
 
