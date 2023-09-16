@@ -266,25 +266,31 @@
                     let api = this.api();
                     let rowNumber = [5];
 
-                    let balance = 0;
-                    let amount  = 0;
-                    for (let index = 1; index <= rowNumber[rowNumber.length - 1]; index++) {
-                        if (index < rowNumber[0]) {
-                            amount  = sumRow(api, index);
-                            balance = index === 2 ? amount : balance - amount;
-                        } else {
-                            console.log(index)
-                            amount = balance;
+                    // total expense + purchase
+                    let expenses = 0;
+                    let income   = 0;
+                    let amount   = 0;
+                    for (let index = 2; index <= rowNumber[rowNumber.length - 1]; index++) {
+                        if (index < rowNumber[0]) { // because index 5 is income
+                            amount    = sumRow(api, index);
+                            if (index < 4) { // index 4 = sale
+                                expenses += amount;
+                            } else {
+                                income = amount - expenses;
+                            }
+                        } else { // incomes
+                            amount = income;
                         }
 
-                        if (index > 1) {
-                            $(api.column(index).footer()).html(formatRupiah(amount));
-                        }
+                        // show total in footer
+                        showTotal(api, index, amount);
                     }
                 }
             },
         }
     }
+
+    const showTotal = (api, index, amount) => $(api.column(index).footer()).html(formatRupiah(amount));
 
     const formatRupiah = (money) => {
         const rupiah = new Intl.NumberFormat(
