@@ -11,6 +11,10 @@ a:hover {
     transform: translate(0, -2px);
 }
 
+input:hover {
+    border-color: #7c69ef;
+}
+
 #crudTable_filter input {
     transition: 0.4s;
 }
