@@ -17,6 +17,7 @@ input:hover {
 
 #crudTable_filter input {
     transition: 0.4s;
+    margin-bottom: 10px;
 }
 
 #crudTable_filter input:hover {
