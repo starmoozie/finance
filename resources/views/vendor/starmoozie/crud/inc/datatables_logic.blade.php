@@ -454,7 +454,7 @@
                     $(action).addClass('dropdown-item').removeClass('btn btn-sm btn-link shadow-sm');
                     $(action).find('i').addClass('me-2 text-primary');
                 });
-                actionCell.prepend('<a class="btn btn-sm shadow-sm px-2 py-1 btn-outline-primary dropdown-toggle actions-buttons-column" href="#" data-toggle="dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">{{ trans('starmoozie::crud.actions') }}</a>');
+                actionCell.prepend('<a class="btn btn-sm shadow-sm px-2 py-1 btn-outline-primary dropdown-toggle actions-buttons-column" href="#" data-toggle="dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">&nbsp; {{ trans('starmoozie::crud.actions') }}</a>');
             });
         }
     }

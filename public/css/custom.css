@@ -1,5 +1,15 @@
 .btn, .card, .round, .form-control {
     border-radius: 1em;
+    transition: 0.4s;
+}
+
+.card:hover:not(.btn),
+.round:hover {
+    transform: translate(0, -3px);
+}
+
+.btn:hover {
+    transform: translate(0, -2px);
 }
 
 .dataTables_paginate ul li.paginate_button.page-item.active a {
