@@ -6,10 +6,12 @@
 .card:hover:not(.btn),
 .round:hover {
     transform: translate(0, -3px);
+    filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
 
 .btn:hover {
     transform: translate(0, -2px);
+    filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
 
 .dataTables_paginate ul li.paginate_button.page-item.active a {
