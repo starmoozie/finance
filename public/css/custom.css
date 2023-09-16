@@ -3,6 +3,32 @@
     transition: 0.4s;
 }
 
+a {
+    transition: 0.4s;
+}
+
+a:hover {
+    transform: translate(0, -2px);
+}
+
+#crudTable_filter input {
+    transition: 0.4s;
+}
+
+#crudTable_filter input:hover {
+    transform: translate(0, -2px);
+    filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
+}
+
+#crudTable_length select {
+    transition: 0.4s;
+}
+
+#crudTable_length select:hover {
+    transform: translate(0, -2px);
+    filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
+}
+
 .card:hover:not(.btn),
 .round:hover {
     transform: translate(0, -3px);
