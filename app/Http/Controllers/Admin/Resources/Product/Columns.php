@@ -22,6 +22,7 @@ trait Columns
             ->label(__('starmoozie::title.sell_price'));
 
         $this->crud->column('current_stock')
-            ->label(__('starmoozie::title.stock'));
+            ->label(__('starmoozie::title.stock'))
+            ->escaped(false);
     }
 }

@@ -12,6 +12,7 @@ return [
     |-------------------
     */
 
+    'min_stock' => env('MIN_STOCK', 20), // If product value less than or equal, then alert
     'show_translatable_field_icon'     => true,
     'translatable_field_icon_position' => 'right', // left or right
 

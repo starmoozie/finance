@@ -104,7 +104,10 @@ class Product extends BaseModel
 
     function getCurrentStockAttribute()
     {
-        return rupiah($this->stock);
+        $stock = rupiah($this->stock);
+        $class = $this->stock <= config('starmoozie.crud.min_stock') ? 'text-danger' : '';
+
+        return "<span class='{$class}'>{$stock}</span>";
     }
 
     public function getOldPriceAttribute()
