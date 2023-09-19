@@ -14,6 +14,7 @@ class ProductApiController extends BaseApiController
     {
         return (new $this->model)
             ->when($request->q, fn($q) => $q->where($this->column, "LIKE", "%{$request->q}%"))
+            ->hasStock()
             ->paginate(10);
     }
 }

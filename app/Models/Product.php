@@ -83,6 +83,14 @@ class Product extends BaseModel
         return $query->select(['id', 'name', 'created_by', 'stock', 'price']);
     }
 
+    /**
+     * Select data has stock
+     */
+    public function scopeHasStock($query)
+    {
+        return $query->where('stock', '>', 0);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS
