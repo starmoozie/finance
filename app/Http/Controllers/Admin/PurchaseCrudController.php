@@ -142,10 +142,13 @@ class PurchaseCrudController extends BaseCrudController
                 'old_price' => (int) $product->price ?? $detail['new_price'] // Jika harga lama === false, maka ambil harga baru
             ]];
 
+            $new_price = (int) $detail['new_price'];
+
             $product?->update([
-                'stock'   => (int) eval("return {$product->stock} + {$detail['qty']};"), // hitung sesuai rumus string
-                'price'   => (int) $detail['new_price'] + $this->calculateProfit($detail),
-                'details' => $product->details ? [...$product->details, ...[$new_details]] : [...[$new_details]]
+                'buy_price'  => $new_price,
+                'stock'      => (int) eval("return {$product->stock} + {$detail['qty']};"), // hitung sesuai rumus string
+                'sell_price' => $new_price + $this->calculateProfit($detail),
+                'details'    => $product->details ? [...$product->details, ...[$new_details]] : [...[$new_details]]
             ]);
         }
     }

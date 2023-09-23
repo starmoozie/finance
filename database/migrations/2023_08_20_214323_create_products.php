@@ -14,11 +14,13 @@ class CreateProducts extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary;
+            $table->string('code', 20)->index()->unique();
             $table->string('created_by', 14)->index();
             $table->string('name', 30);
             $table->string('stock', 15)->nullable();
-            $table->string('price', 15)->nullable();
+            $table->string('buy_price', 15)->nullable();
+            $table->string('sell_price', 15)->nullable();
             $table->json('details')->nullable();
             $table->timestamps();
         });

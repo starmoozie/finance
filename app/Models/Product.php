@@ -13,15 +13,21 @@ class Product extends BaseModel
     */
 
     protected $fillable = [
+        'code',
         'name',
         'created_by',
         'stock',
-        'price',
+        'buy_price',
+        'sell_price',
         'details'
     ];
 
     protected $casts    = [
         'details' => 'array'
+    ];
+
+    protected $appends  = [
+        "code_name"
     ];
 
     /*
@@ -80,7 +86,7 @@ class Product extends BaseModel
      */
     public function scopeDefaultSelectColumnsList($query)
     {
-        return $query->select(['id', 'name', 'created_by', 'stock', 'price']);
+        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'code']);
     }
 
     /**
@@ -97,9 +103,14 @@ class Product extends BaseModel
     |--------------------------------------------------------------------------
     */
 
-    function getCurrentPriceAttribute()
+    function getCurrentBuyPriceAttribute()
     {
-        return rupiah($this->price);
+        return rupiah($this->buy_price);
+    }
+
+    function getCurrentSellPriceAttribute()
+    {
+        return rupiah($this->sell_price);
     }
 
     function getCurrentStockAttribute()
@@ -114,7 +125,12 @@ class Product extends BaseModel
     {
         $details = $this->details;
 
-        return $details ? end($details)['old_price'] : $this->price;
+        return $details ? end($details)['old_price'] : $this->sell_price;
+    }
+
+    public function getCodeNameAttribute()
+    {
+        return "{$this->code} | {$this->name}";
     }
 
     /*

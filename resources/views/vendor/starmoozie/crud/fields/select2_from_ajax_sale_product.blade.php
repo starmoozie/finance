@@ -157,7 +157,7 @@
 
                             return {
                                 text: item[textField],
-                                id: `${item[$connectedEntityKeyName]}~${item.price}~${item.stock}`
+                                id: `${item[$connectedEntityKeyName]}~${item.sell_price}~${item.stock}`
                             }
                         }),
                         pagination: {
@@ -181,8 +181,8 @@
 
             // Set id current field indexNumber
             // $(`.form-control[name='details[${indexNumber}][product_id]`).val('asd').change();
-            // set price current field indexNumber
-            $(`input[name='details[${indexNumber}][price]']`).val(formatRupiah(splitValue[1]));
+            // set sell_price current field indexNumber
+            $(`input[name='details[${indexNumber}][sell_price]']`).val(formatRupiah(splitValue[1]));
             // // Set stock current field indexNumber
             $(`input[name='details[${indexNumber}][stock]']`).val(formatRupiah(splitValue[2]));
             // // Set subTotal current field indexNumber

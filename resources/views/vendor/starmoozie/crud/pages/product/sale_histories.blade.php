@@ -37,7 +37,7 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ rupiah($value['qty']) }}</td>
                         <td>{{ rupiah($value['sub_total']) }}</td>
-                        <td>{{ rupiah($value['price']) }}</td>
+                        <td>{{ rupiah($value['sell_price']) }}</td>
                         <td>{{ $purchase->created_at }}</td>
                     </tr>
                 @endforeach

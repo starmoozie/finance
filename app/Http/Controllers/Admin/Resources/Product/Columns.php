@@ -15,10 +15,16 @@ trait Columns
     {
         $this->creatorColumn();
 
+        $this->crud->column('code')
+            ->label(__('starmoozie::title.code'));
+
         $this->crud->column('name')
             ->label(__('starmoozie::base.name'));
 
-        $this->crud->column('current_price')
+        $this->crud->column('current_buy_price')
+            ->label(__('starmoozie::title.buy_price'));
+
+        $this->crud->column('current_sell_price')
             ->label(__('starmoozie::title.sell_price'));
 
         $this->crud->column('current_stock')

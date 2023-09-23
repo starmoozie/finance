@@ -10,6 +10,11 @@ trait Fetch
 
     protected function fetchProducts()
     {
-        return $this->fetch(Product::class);
+        return $this->fetch([
+            'model'                 => Product::class,
+            'searchable_attributes' => ['name', 'code'],
+            'paginate'              => 10,
+            'searchOperator'        => 'LIKE'
+        ]);
     }
 }

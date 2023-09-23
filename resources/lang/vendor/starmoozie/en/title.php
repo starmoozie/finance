@@ -42,6 +42,7 @@ return [
     'profit_item' => 'Profit /Item',
     'price_item' => 'Price /Item',
     'sale_hitories' => 'Sale Histoies',
+    'code' => 'Code',
 
     // Tabs
     'general' => 'General',
@@ -55,4 +56,5 @@ return [
     // Hint
     'hint_amount_dashboard' => 'Amount in this month.',
     'hint_weekly_transactions' => 'Weekly Transactions',
+    'hint_code' => 'If you leave input to blank. System will automatically generate',
 ];

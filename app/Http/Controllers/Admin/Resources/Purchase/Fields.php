@@ -33,7 +33,8 @@ trait Fields
                 'attributes' => ['required' => 'required'],
                 'ajax'       => true,
                 'inline_create' => ['entity' => 'product'],
-                'minimum_input_length' => 0
+                'minimum_input_length' => 0,
+                'attribute'  => 'code_name'
             ],
             [
                 'name'       => 'qty',

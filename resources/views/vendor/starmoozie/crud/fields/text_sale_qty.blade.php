@@ -44,11 +44,11 @@
                     $(`input[name='details[${indexNumber}][${name}]']`)
                     .on('input', function(e) {
                         let subTotal = e.target.value.replace(/\./g, '');
-                        let price    = $(`input[name='details[${indexNumber}][price]']`).val();
-                        price = price.replace(/\./g, '');
+                        let sell_price    = $(`input[name='details[${indexNumber}][sell_price]']`).val();
+                        sell_price = sell_price.replace(/\./g, '');
 
                         // Set subTotal current field indexNumber
-                        $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(price * subTotal));
+                        $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(sell_price * subTotal));
                     });
                 }
 

@@ -33,11 +33,12 @@ trait Fields
                 'attributes' => ['required' => 'required'],
                 'data_source'=> starmoozie_url('fetch/product'),
                 'allows_null'=> false,
-                'minimum_input_length' => 0
+                'minimum_input_length' => 0,
+                'attribute'  => 'code_name'
             ],
             [
-                'name'       => 'price',
-                'label'      => __('starmoozie::title.price'),
+                'name'       => 'sell_price',
+                'label'      => __('starmoozie::title.sell_price'),
                 'prefix'     => 'Rp',
                 'wrapper'    => ['class' => 'form-group col-md-3'],
                 'attributes' => ['required' => 'required', 'readonly' => 'readonly']

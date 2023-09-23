@@ -220,6 +220,10 @@ class Transaction extends BaseModel
         foreach ($this->details as $key => $detail) {
             $details[$key] = $detail;
             $details[$key]['product'] = $products->where('id', $detail['product_id'])->first()?->name;
+
+            if (isset($detail['type_profit'])) {
+                $details[$key]['type_profit'] = $detail['type_profit'] ? __('starmoozie::title.money') : __('starmoozie::title.percent');
+            }
             unset($details[$key]['product_id']);
         }
 
