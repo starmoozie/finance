@@ -44,7 +44,7 @@ trait Fields
                 'attributes' => ['required' => 'required']
             ],
             [
-                'name'       => 'sub_total',
+                'name'       => 'total_price',
                 'label'      => __('starmoozie::title.total_price'),
                 'prefix'     => 'Rp',
                 'wrapper'    => ['class' => 'form-group col-md-4'],
@@ -63,7 +63,7 @@ trait Fields
                 'inline'  => true
             ],
             [
-                'name'       => 'profit',
+                'name'       => 'amount_profit',
                 'label'      => __('starmoozie::title.profit'),
                 'type'       => 'number',
                 'wrapper'    => ['class' => 'form-group col-md-4'],

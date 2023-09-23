@@ -18,7 +18,7 @@
     @includeWhen(!empty($column['wrapper']), 'crud::columns.inc.wrapper_start')
 
     <div class="table-responsive">
-        <table class="table table-bordered table-condensed table-striped m-b-0">
+        <table class="table table-bordered table-condensed m-b-0">
             @switch(Route::currentRouteName())
                 @case('purchase.show')
                     @includeIf('starmoozie::crud.pages.purchase.details')

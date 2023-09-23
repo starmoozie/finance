@@ -15,11 +15,11 @@ class ProductRequest extends BaseRequest
     public function rules()
     {
         return [
-            'code' => [
-                'required',
-                'max:20',
-                Rule::unique(Product::class)->when($this->method() === 'PUT', fn($q) => $q->ignore(request()->id))
-            ],
+            // 'code' => [
+            //     'required',
+            //     'max:20',
+            //     Rule::unique(Product::class)->when($this->method() === 'PUT', fn($q) => $q->ignore(request()->id))
+            // ],
             'name' => [
                 'required',
                 'max:50',

@@ -48,13 +48,29 @@ class Transaction extends BaseModel
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    // public function products()
+    // {
+    //     return $this->belongsToJson(
+    //         Product::class,
+    //         'details[]->product_id',
+    //         'id'
+    //     );
+    // }
+    
     public function products()
     {
-        return $this->belongsToJson(
-            Product::class,
-            'details[]->product_id',
-            'id'
-        );
+        return $this->BelongsToMany(Product::class, 'product_transactions')
+        ->withPivot([
+            'qty',
+            'buy_price',
+            'sell_price',
+            'total_price',
+            'amount_profit',
+            'type_profit',
+            'calculated_profit',
+            'note'
+        ])
+        ->withTimestamps();
     }
 
     /*
@@ -260,6 +276,11 @@ class Transaction extends BaseModel
     public function getBalanceAttribute()
     {
         return rupiah($this->last_total_debit - $this->last_total_credit);
+    }
+
+    public function getDetailsAttribute($value)
+    {
+        return $this->products->pluck('pivot');
     }
 
     /*

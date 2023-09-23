@@ -13,7 +13,7 @@ trait Shows
     {
         $this->setColumns();
 
-        $this->crud->column('details_with_product')
+        $this->crud->column('products')
             ->label(__('starmoozie::title.details'))
             ->type('view')
             ->view('starmoozie::crud.pages.transaction.details')

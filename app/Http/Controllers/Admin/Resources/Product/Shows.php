@@ -14,14 +14,7 @@ trait Shows
     {
         $this->setColumns();
 
-        $this->crud->column('purchases')
-            ->label(__('starmoozie::title.purchase_hitories'))
-            ->type('view')
-            ->view('starmoozie::crud.pages.transaction.details');
-
-        $this->crud->column('sales')
-            ->label(__('starmoozie::title.sale_hitories'))
-            ->type('view')
-            ->view('starmoozie::crud.pages.transaction.details');
+        $this->crud->addButtonFromView('line', 'product_histories', 'product_histories', 'beginning');
+        $this->crud->removeButton('delete');
     }
 }

@@ -13,11 +13,11 @@ class CreateGroups extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name', 50)->unique();
-            $table->timestamps();
-        });
+        // Schema::create('groups', function (Blueprint $table) {
+        //     $table->uuid('id')->primary();
+        //     $table->string('name', 50)->unique();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateGroups extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        // Schema::dropIfExists('groups');
     }
 }
