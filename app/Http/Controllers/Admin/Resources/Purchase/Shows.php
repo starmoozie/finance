@@ -12,6 +12,7 @@ trait Shows
     protected function setShows()
     {
         $this->setColumns();
+
         $this->crud->column('details_with_product')
             ->label(__('starmoozie::title.details'))
             ->type('view')

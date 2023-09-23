@@ -34,13 +34,21 @@ trait Fields
                 'data_source'=> starmoozie_url('fetch/product'),
                 'allows_null'=> false,
                 'minimum_input_length' => 0,
-                'attribute'  => 'code_name'
+                'attribute'  => 'code_name',
+                'placeholder' => __('starmoozie::title.select_product')
+            ],
+            [
+                'name'       => 'buy_price',
+                'label'      => __('starmoozie::title.buy_price'),
+                'prefix'     => 'Rp',
+                'wrapper'    => ['class' => 'form-group col-md-2'],
+                'attributes' => ['required' => 'required', 'readonly' => 'readonly']
             ],
             [
                 'name'       => 'sell_price',
                 'label'      => __('starmoozie::title.sell_price'),
                 'prefix'     => 'Rp',
-                'wrapper'    => ['class' => 'form-group col-md-3'],
+                'wrapper'    => ['class' => 'form-group col-md-2'],
                 'attributes' => ['required' => 'required', 'readonly' => 'readonly']
             ],
             [
@@ -60,7 +68,7 @@ trait Fields
                 'name'       => 'sub_total',
                 'label'      => __('starmoozie::title.sub_total'),
                 'prefix'     => 'Rp',
-                'wrapper'    => ['class' => 'form-group col-md-3'],
+                'wrapper'    => ['class' => 'form-group col-md-2'],
                 'attributes' => ['required' => 'required', 'readonly' => 'readonly']
             ],
         ];

@@ -19,24 +19,26 @@
 
     <div class="table-responsive">
         <table class="table table-bordered table-condensed table-striped m-b-0">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    @foreach($column['value'][0] as $tableColumnKey => $tableColumnLabel)
-                        <th>{{ ucwords($tableColumnKey) }}</th>
-                    @endforeach
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($column['value'] as $key => $value)
-                    <tr>
-                        <td>{{ $key + 1 }}</td>
-                        @foreach($value as $label => $null)
-                            <td>{!! is_numeric($value[$label]) ? rupiah($value[$label]) : $value[$label] !!}</td>
-                        @endforeach
-                    </tr>
-                @endforeach
-            </tbody>
+            @switch(Route::currentRouteName())
+                @case('purchase.show')
+                    @includeIf('starmoozie::crud.pages.purchase.details')
+                    @break
+
+                @case('sale.show')
+                    @includeIf('starmoozie::crud.pages.sale.details')
+                    @break
+
+                @case('product.show')
+                    @if($column['key'] === 'purchases')
+                        @includeIf('starmoozie::crud.pages.product.purchase_histories')
+                    @else
+                        @includeIf('starmoozie::crud.pages.product.sale_histories')
+                    @endif
+                    @break
+
+                @default
+                    @break
+            @endswitch
         </table>
     </div>
 

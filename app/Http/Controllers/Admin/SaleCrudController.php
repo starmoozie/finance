@@ -77,7 +77,8 @@ class SaleCrudController extends BaseCrudController
         foreach ($details as $detail) {
             $detail['product_id'] = explode('~', $detail['product_id'])[0];
             $detail['stock']      = rupiahToInteger($detail['stock']);
-            $detail['sell_price']      = rupiahToInteger($detail['sell_price']);
+            $detail['buy_price']  = rupiahToInteger($detail['buy_price']);
+            $detail['sell_price'] = rupiahToInteger($detail['sell_price']);
             $detail['qty']        = rupiahToInteger($detail['qty']);
             $detail['sub_total']  = rupiahToInteger($detail['sub_total']);
 

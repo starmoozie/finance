@@ -34,7 +34,8 @@ trait Fields
                 'ajax'       => true,
                 'inline_create' => ['entity' => 'product'],
                 'minimum_input_length' => 0,
-                'attribute'  => 'code_name'
+                'attribute'  => 'code_name',
+                'placeholder' => __('starmoozie::title.select_product')
             ],
             [
                 'name'       => 'qty',

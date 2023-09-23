@@ -32,3 +32,17 @@ if (!function_exists('rupiahToInteger')) {
         return (int) str_replace('.', '', $rupiah);
     }
 }
+
+if (!function_exists('calculateProfit')) {
+    /**
+     * Calculate profit
+     * @param booleanString $type_profit
+     * @param number $profit_amount
+     * @param number $buy_price
+     * @return number
+     */
+    function calculateProfit($type_profit, $profit_amount, $buy_price)
+    {
+        return filter_var($type_profit, FILTER_VALIDATE_BOOLEAN) ? $profit_amount : ($profit_amount / 100) * $buy_price;
+    }
+}

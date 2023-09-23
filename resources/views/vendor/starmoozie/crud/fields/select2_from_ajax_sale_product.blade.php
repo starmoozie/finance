@@ -154,10 +154,11 @@
                     let result = {
                         results: $.map(data.data, function (item) {
                             textField = $fieldAttribute;
+                            console.log(item)
 
                             return {
                                 text: item[textField],
-                                id: `${item[$connectedEntityKeyName]}~${item.sell_price}~${item.stock}`
+                                id: `${item[$connectedEntityKeyName]}~${item.sell_price}~${item.stock}~${item.buy_price}`
                             }
                         }),
                         pagination: {
@@ -174,6 +175,7 @@
             const indexNumber = element.attr('data-row-number') - 1;
             let name          = element.attr('name');
             let value         = e.target.value;
+            console.log(value)
             let splitValue    = value.split('~');
 
             let qty           = $(`input[name='details[${indexNumber}][qty]']`).val();
@@ -185,6 +187,8 @@
             $(`input[name='details[${indexNumber}][sell_price]']`).val(formatRupiah(splitValue[1]));
             // // Set stock current field indexNumber
             $(`input[name='details[${indexNumber}][stock]']`).val(formatRupiah(splitValue[2]));
+            // set buy_price current field indexNumber
+            $(`input[name='details[${indexNumber}][buy_price]']`).val(formatRupiah(splitValue[3]));
             // // Set subTotal current field indexNumber
             $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(splitValue[1] * qty));
         });

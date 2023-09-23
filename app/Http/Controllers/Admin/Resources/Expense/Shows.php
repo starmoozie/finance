@@ -12,9 +12,9 @@ trait Shows
     protected function setShows()
     {
         $this->setColumns();
-        $this->crud->column('details')
-            ->type('view')
-            ->view('starmoozie::crud.pages.transaction.details')
-            ->after('total_nominal');
+        // $this->crud->column('details')
+        //     ->type('view')
+        //     ->view('starmoozie::crud.pages.transaction.details')
+        //     ->after('total_nominal');
     }
 }

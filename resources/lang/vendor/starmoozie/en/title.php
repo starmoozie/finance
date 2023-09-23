@@ -43,6 +43,7 @@ return [
     'price_item' => 'Price /Item',
     'sale_hitories' => 'Sale Histoies',
     'code' => 'Code',
+    'select_product' => 'Type Name or Code Product',
 
     // Tabs
     'general' => 'General',

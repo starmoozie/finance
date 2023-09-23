@@ -155,6 +155,6 @@ class PurchaseCrudController extends BaseCrudController
 
     private function calculateProfit($detail)
     {
-        return filter_var($detail['type_profit'], FILTER_VALIDATE_BOOLEAN) ? (int) $detail['profit'] : ($detail['profit'] / 100) * $detail['new_price'];
+        return calculateProfit($detail['type_profit'], $detail['profit'], $detail['new_price']);
     }
 }
