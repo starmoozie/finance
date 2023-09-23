@@ -39,7 +39,7 @@ class SaleCrudController extends BaseCrudController
 
         $response = $this->traitStore();
 
-        $this->handleProductQty($request->details);
+        $this->handlePivotRelationship($request->details);
 
         return $response;
     }
@@ -51,16 +51,13 @@ class SaleCrudController extends BaseCrudController
      */
     public function update()
     {
-        $old_entry = $this->crud->getCurrentEntry();
         $request   = $this->crud->getRequest();
 
         $this->addRequest($request, $this->handleDetails($request->details));
 
         $response = $this->traitUpdate();
         
-        $final_array = $this->handleAddOrRemoveDetails($old_entry->details);
-
-        $this->handleProductQty($final_array);
+        $this->handlePivotRelationship($request->details);
 
         return $response;
     }
@@ -74,15 +71,15 @@ class SaleCrudController extends BaseCrudController
         $total_price = 0;
         $total_qty   = 0;
 
-        foreach ($details as $detail) {
-            $detail['product_id'] = explode('~', $detail['product_id'])[0];
-            $detail['stock']      = rupiahToInteger($detail['stock']);
-            $detail['buy_price']  = rupiahToInteger($detail['buy_price']);
-            $detail['sell_price'] = rupiahToInteger($detail['sell_price']);
-            $detail['qty']        = rupiahToInteger($detail['qty']);
-            $detail['sub_total']  = rupiahToInteger($detail['sub_total']);
+        foreach ($details as $key => $detail) {
+            $detail['product_id']  = explode('~', $detail['product_id'])[0];
+            $detail['stock']       = rupiahToInteger($detail['stock']);
+            $detail['buy_price']   = rupiahToInteger($detail['buy_price']);
+            $detail['sell_price']  = rupiahToInteger($detail['sell_price']);
+            $detail['qty']         = rupiahToInteger($detail['qty']);
+            $detail['total_price'] = rupiahToInteger($detail['total_price']);
 
-            $total_price += $detail['sub_total'];
+            $total_price += $detail['total_price'];
             $total_qty   += $detail['qty'];
 
             $data[] = $detail;
@@ -96,34 +93,62 @@ class SaleCrudController extends BaseCrudController
     }
 
     /**
-     * Logic handling add or remove item in request details
+     * Handle pivot 
      */
-    protected function handleAddOrRemoveDetails(array $old_details): array
+    private function handlePivotRelationship($details): void
     {
-        $final_array = [];
-        foreach ([...$old_details, ...$this->crud->entry->details] as $detail) {
-            $is_has_old_data = array_filter($old_details, fn($q) => $q['product_id'] === $detail['product_id']);
-            $operator        = count($is_has_old_data) ? "-" : "+";
-            $isset_qty       = isset($final_array[$detail['product_id']]['qty']);
+        $relation_values = [];
+        foreach ($details as $key => $detail) {
+            $pivot_data                      = $detail;
+            $pivot_data['calculated_profit'] = $detail['sell_price'] - $detail['buy_price'];
 
-            $final_array[$detail['product_id']]['product_id']  = $detail['product_id'];
-            $final_array[$detail['product_id']]['qty']         = $isset_qty
-                ? "{$final_array[$detail['product_id']]['qty']} - {$detail['qty']}"
-                : "{$operator} {$detail['qty']}";
+            $relation_values[$detail['product_id']] = $pivot_data;
         }
 
-        return $final_array;
+        $this->addRemoveProductLogic($relation_values, $this->crud->entry->details->toArray());
+
+        $this->crud->entry->products()->sync($relation_values);
     }
 
     /**
-     * Handling product qty
+     * Logic to add or remove product
      */
-    protected function handleProductQty(array $details): void
+    private function addRemoveProductLogic($new_pivot, $old_pivot): bool
     {
-        foreach ($details as $detail) {
-            $product = Product::find($detail['product_id']);
+        $unique = [];
+        foreach (array_values([...$new_pivot, ...$old_pivot]) as $key => $detail) {
+            $operator    = collect($old_pivot)->filter(fn($q) => $q['product_id'] === $detail['product_id'])->count() ? '+' : '-';
+            $isset_qty   = isset($unique[$detail['product_id']]['qty']);
+            $request_qty = collect($new_pivot)->filter(fn($q) => $q['product_id'] === $detail['product_id'])->first();
 
-            $product->update(['stock' => (int) eval("return {$product->stock} - {$detail['qty']};")]);
+            // Merged old + new pivot then unique data by product_id
+            $unique[$detail['product_id']] = $detail;
+
+            /**
+             * Identity operator to calculate product stock
+             * If isset_qty then, - old_qty + new_qty ( Identify if quantity of old product has additions/subtractions? )
+             * Else ? this item identity if add or remove product, if product removed then operator is negative else positive
+             */
+            $unique[$detail['product_id']]['operator'] = $isset_qty
+                ? "+ {$unique[$detail['product_id']]['qty']} - {$request_qty['qty']}"
+                : "{$operator} {$detail['qty']}";
         }
+
+        return $this->updateProduct($unique);
+    }
+
+    /**
+     * Update product
+     * Formula stock product ( old_stock - old_qty_from_pivot + new_request_qty )
+     */
+    private function updateProduct($unique): bool
+    {
+        foreach ($unique as $key => $value) {
+            $product = Product::find($value['product_id']);
+
+            $product->update(['stock' => eval("return {$product->stock} {$value['operator']};")]);
+        }
+
+        return true;
     }
 }

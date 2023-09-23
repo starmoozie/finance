@@ -48,7 +48,7 @@
                         sell_price = sell_price.replace(/\./g, '');
 
                         // Set subTotal current field indexNumber
-                        $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(sell_price * subTotal));
+                        $(`input[name='details[${indexNumber}][total_price]']`).val(formatRupiah(sell_price * subTotal));
                     });
                 }
 

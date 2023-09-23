@@ -154,11 +154,10 @@
                     let result = {
                         results: $.map(data.data, function (item) {
                             textField = $fieldAttribute;
-                            console.log(item)
 
                             return {
                                 text: item[textField],
-                                id: `${item[$connectedEntityKeyName]}~${item.sell_price}~${item.stock}~${item.buy_price}`
+                                id: `${item[$connectedEntityKeyName]}~${item.sell_price}~${item.stock}~${item.buy_price}~${item.parent_id}`
                             }
                         }),
                         pagination: {
@@ -173,10 +172,8 @@
         })
         .on("select2:select", function (e) {
             const indexNumber = element.attr('data-row-number') - 1;
-            let name          = element.attr('name');
-            let value         = e.target.value;
-            console.log(value)
-            let splitValue    = value.split('~');
+            const value       = e.target.value;
+            const splitValue  = value.split('~');
 
             let qty           = $(`input[name='details[${indexNumber}][qty]']`).val();
             qty = qty.replace(/\./g, '');
@@ -189,8 +186,10 @@
             $(`input[name='details[${indexNumber}][stock]']`).val(formatRupiah(splitValue[2]));
             // set buy_price current field indexNumber
             $(`input[name='details[${indexNumber}][buy_price]']`).val(formatRupiah(splitValue[3]));
+            // set parent_id current field indexNumber
+            $(`input[name='details[${indexNumber}][parent_id]']`).val(splitValue[4] === "undefined" ? "" : splitValue[4]);
             // // Set subTotal current field indexNumber
-            $(`input[name='details[${indexNumber}][sub_total]']`).val(formatRupiah(splitValue[1] * qty));
+            $(`input[name='details[${indexNumber}][total_price]']`).val(formatRupiah(splitValue[1] * qty));
         });
 
         mapDependencies(element, $dependencies, form)

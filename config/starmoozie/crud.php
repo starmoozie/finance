@@ -13,6 +13,7 @@ return [
     */
 
     'min_stock' => env('MIN_STOCK', 20), // If product value less than or equal, then alert
+    'sale_config' => 0, // 0 => Selling price follows latest purchase price, 1 => Selling price depends on each purchase price
     'show_translatable_field_icon'     => true,
     'translatable_field_icon_position' => 'right', // left or right
 

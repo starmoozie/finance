@@ -21,11 +21,13 @@ trait Columns
         $this->crud->column('name')
             ->label(__('starmoozie::base.name'));
 
-        $this->crud->column('current_buy_price')
-            ->label(__('starmoozie::title.buy_price'));
+        if (!config('starmoozie.crud.sale_config')) {
+            $this->crud->column('current_buy_price')
+                ->label(__('starmoozie::title.buy_price'));
 
-        $this->crud->column('current_sell_price')
-            ->label(__('starmoozie::title.sell_price'));
+            $this->crud->column('current_sell_price')
+                ->label(__('starmoozie::title.sell_price'));
+        }
 
         $this->crud->column('current_stock')
             ->label(__('starmoozie::title.stock'))

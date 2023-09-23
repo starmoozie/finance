@@ -49,16 +49,29 @@ class Product extends BaseModel
 
     public function transactions()
     {
-        return $this->hasManyJson(
+        return $this->belongsToMany(
             Transaction::class,
-            'details[]->product_id',
-            'id'
+            'product_transactions'
         );
     }
 
     public function purchases()
     {
-        return $this->transactions()->purchase();
+        return $this->transactions()
+            ->purchase()
+            ->withPivot([
+                'qty',
+                'buy_price',
+                'sell_price',
+                'total_price',
+                'amount_profit',
+                'type_profit',
+                'calculated_profit',
+                'note',
+                'parent_id',
+                'stock'
+            ])
+            ->withTimestamps();
     }
 
     public function sales()
@@ -86,7 +99,7 @@ class Product extends BaseModel
      */
     public function scopeDefaultSelectColumnsList($query)
     {
-        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'code']);
+        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'buy_price', 'code']);
     }
 
     /**

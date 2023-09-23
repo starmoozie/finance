@@ -68,7 +68,9 @@ class Transaction extends BaseModel
             'amount_profit',
             'type_profit',
             'calculated_profit',
-            'note'
+            'note',
+            'parent_id',
+            'stock'
         ])
         ->withTimestamps();
     }

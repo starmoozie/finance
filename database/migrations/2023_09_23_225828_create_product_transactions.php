@@ -15,9 +15,11 @@ class CreateProductTransactions extends Migration
     {
         Schema::create('product_transactions', function (Blueprint $table) {
             $table->id();
+            $table->uuid('parent_id')->index()->nullable();
             $table->uuid('product_id')->index();
             $table->uuid('transaction_id')->index();
             $table->string('qty', 15);
+            $table->string('stock', 15);
             $table->string('buy_price', 15);
             $table->string('sell_price', 15);
             $table->string('total_price', 15);

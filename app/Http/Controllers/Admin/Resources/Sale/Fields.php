@@ -65,12 +65,16 @@ trait Fields
                 'attributes' => ['required' => 'required']
             ],
             [
-                'name'       => 'sub_total',
+                'name'       => 'total_price',
                 'label'      => __('starmoozie::title.sub_total'),
                 'prefix'     => 'Rp',
                 'wrapper'    => ['class' => 'form-group col-md-2'],
                 'attributes' => ['required' => 'required', 'readonly' => 'readonly']
             ],
+            [
+                'name' => 'parent_id',
+                'type' => 'hidden'
+            ]
         ];
     }
 }
