@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Constants\LengthContant;
 
 class CreateTransactions extends Migration
 {
@@ -17,8 +18,8 @@ class CreateTransactions extends Migration
             $table->uuid('id')->primary();
             $table->string('created_by', 14)->index();
             $table->json('details');
-            $table->string('total_price', 15);
-            $table->string('total_qty', 15);
+            $table->string('total_price', LengthContant::MAX_NUMERIC);
+            $table->string('total_qty', LengthContant::MAX_NUMERIC);
             $table->smallInteger('type')->default(0);
             $table->timestamps();
         });

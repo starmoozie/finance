@@ -3,13 +3,13 @@
 namespace App\Http\Requests;
 
 use App\Rules\CheckIfQtyNotMoreThanStockRule;
+use App\Constants\LengthContant;
 use Illuminate\Validation\Rule;
 use App\Models\Product;
 
 class SaleRequest extends BaseRequest
 {
     const MIN = 0;
-    const MAX = 15;
 
     /**
      * Get the validation rules that apply to the request.
@@ -30,7 +30,7 @@ class SaleRequest extends BaseRequest
             'details.*.qty' => [
                 'required',
                 'not_in:' . Self::MIN,
-                'digits_between:1,' . Self::MAX,
+                'digits_between:1,' . LengthContant::MAX_NUMERIC,
                 new CheckIfQtyNotMoreThanStockRule(request()->details)
             ]
         ];
@@ -41,7 +41,7 @@ class SaleRequest extends BaseRequest
         return [
             'details.*.product_id.exists'  => __('validation.exists', ['attribute' => __('starmoozie::title.product')]),
             'details.*.qty.not_in'         => __('validation.gt.numeric', ['attribute' => __('starmoozie::title.qty'), 'value' => Self::MIN]),
-            'details.*.qty.digits_between' => __('validation.max.digits', ['attribute' => __('starmoozie::title.qty'), 'value' => Self::MAX]),
+            'details.*.qty.digits_between' => __('validation.max.digits', ['attribute' => __('starmoozie::title.qty'), 'value' => LengthContant::MAX_NUMERIC]),
         ];
     }
 }

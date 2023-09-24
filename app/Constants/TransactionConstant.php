@@ -9,8 +9,8 @@ class TransactionConstant
     const EXPENSE  = 2;
 
     const ALL      = [
-        ['label' => 'sale', 'value' => 0, 'color' => 'success'],
-        ['label' => 'purchase', 'value' => 1, 'color' => 'warning'],
-        ['label' => 'expense', 'value' => 2, 'color' => 'danger'],
+        ['label' => 'sale', 'value' => Self::SALE, 'color' => 'success'],
+        ['label' => 'purchase', 'value' => Self::PURCHASE, 'color' => 'warning'],
+        ['label' => 'expense', 'value' => Self::EXPENSE, 'color' => 'danger'],
     ];
 }

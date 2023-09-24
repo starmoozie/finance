@@ -2,7 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\CheckProfitRule;
+use App\Rules\CheckAmountProfitRule;
+use App\Constants\LengthContant;
 use Illuminate\Validation\Rule;
 use App\Models\Product;
 
@@ -15,26 +16,33 @@ class PurchaseRequest extends BaseRequest
      */
     public function rules()
     {
+        $max_numeric = LengthContant::MAX_NUMERIC;
+
         return [
-            // 'details.*' => [
-            //     'required',
-            //     'array'
-            // ],
-            // 'details.*.qty' => [
-            //     'required',
-            //     'regex:/[0-9]{1,15}/'
-            // ],
-            // 'details.*.sub_total' => [
-            //     'required',
-            //     'regex:/[0-9]{3,15}/'
-            // ],
-            // 'details.*.type_profit' => [
-            //     'required',
-            //     'boolean'
-            // ],
-            // 'details.*.profit' => [
-            //     'required'
-            // ]
+            'details.*' => [
+                'required',
+                'array'
+            ],
+            'details.*.product_id' => [
+                'required',
+                Rule::exists(Product::class, 'id')
+            ],
+            'details.*.qty' => [
+                'required',
+                "regex:/[0-9]{1,$max_numeric}/"
+            ],
+            'details.*.total_price' => [
+                'required',
+                "regex:/[0-9]{1,$max_numeric}/"
+            ],
+            'details.*.type_profit' => [
+                'required',
+                'boolean'
+            ],
+            'details.*.amount_profit' => [
+                'required',
+                new CheckAmountProfitRule(request()->details)
+            ]
         ];
     }
 }

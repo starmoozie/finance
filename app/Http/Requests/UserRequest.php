@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Constants\LengthContant;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 
@@ -14,24 +15,25 @@ class UserRequest extends BaseRequest
      */
     public function rules()
     {
-        $is_update = $this->method() === "PUT";
-        $id        = request()->id;
+        $is_update   = $this->method() === "PUT";
+        $id          = request()->id;
+        $max_numeric = LengthContant::MAX_NUMERIC;
 
         return [
             'name' => [
-                'max:50',
+                'max:' . LengthContant::MAX_NAME,
                 'required',
                 'regex:/^[a-z A-Z]+$/'
             ],
             'email' => [
-                'max:50',
+                'max:' . LengthContant::MAX_NAME,
                 'required',
                 'email',
                 Rule::unique(User::class)->when($is_update, fn($q) => $q->ignore($id))
             ],
             'mobile' => [
                 'required',
-                'regex:/(08)[0-9]{6,15}/',
+                "regex:/(08)[0-9]{6,$max_numeric}/",
                 Rule::unique(User::class)->when($is_update, fn($q) => $q->ignore($id))
             ],
             'password' => $is_update ? 'confirmed' : 'required|confirmed',

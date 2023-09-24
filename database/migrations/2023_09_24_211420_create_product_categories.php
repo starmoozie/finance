@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Constants\LengthContant;
 
 class CreateProductCategories extends Migration
 {
@@ -15,7 +16,7 @@ class CreateProductCategories extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->uuid('id')->primary;
-            $table->string('name', 30)->unique();
+            $table->string('name', LengthContant::MAX_NAME)->unique();
             $table->timestamps();
         });
     }
