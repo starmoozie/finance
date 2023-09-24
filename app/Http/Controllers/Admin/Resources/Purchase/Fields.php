@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Resources\Purchase;
 
+use App\Constants\TypeProfitConstant;
+
 trait Fields
 {
     /**
@@ -34,7 +36,7 @@ trait Fields
                 'ajax'       => true,
                 'inline_create' => ['entity' => 'product'],
                 'minimum_input_length' => 0,
-                'attribute'  => 'code_name',
+                'attribute'   => 'code_name',
                 'placeholder' => __('starmoozie::title.select_product')
             ],
             [
@@ -54,10 +56,7 @@ trait Fields
                 'name'    => 'type_profit',
                 'label'   => __('starmoozie::title.type_profit'),
                 'type'    => 'radio',
-                'options' => [
-                    0 => __('starmoozie::title.percent'),
-                    1 => __('starmoozie::title.money')
-                ],
+                'options' => array_map(fn($item) => __("starmoozie::title.{$item}"), TypeProfitConstant::ALL),
                 'wrapper' => ['class' => 'form-group col-md-4'],
                 'default' => 1,
                 'inline'  => true
