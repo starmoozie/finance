@@ -28,8 +28,8 @@
 - `composer install`
 - `php artisan starmoozie:install`
 - `php artisan migrate --seed`
-- `php artisan db:seed --class=RouteSeeder`
 - `php artisan db:seed --class=MenuSeeder`
+- `php artisan db:seed --class=RouteSeeder`
 
 ## Default User
 - Email `starmoozie@gmail.com`
