@@ -21,6 +21,18 @@ class ExpenseCrudController extends BaseCrudController
     ];
 
     /**
+     * Define what happens when the List operation is loaded.
+     * 
+     * @return void
+     */
+    protected function setupListOperation()
+    {
+        parent::setupListOperation();
+
+        $this->crud->setOperationSetting('searchableTable', false);
+    }
+
+    /**
      * Store a newly created resource in the database.
      *
      * @return \Illuminate\Http\RedirectResponse
