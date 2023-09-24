@@ -25,6 +25,18 @@ class RouteSeeder extends Seeder
             'method'       => 'get', // crud, get, post, put, patch, delete
             'controller'   => 'Api\ProductApiController@fetchAll', // Name of controller
             'type'         => 'dashboard_api' // dashboard, api, dahsboard_api, web
+        ],
+        [
+            'route'        => 'product/{product_id}/sale', // Name of route menu
+            'method'       => 'crud', // crud, get, post, put, patch, delete
+            'controller'   => 'ProductSaleCrudController', // Name of controller
+            'type'         => 'dashboard' // dashboard, api, dahsboard_api, web
+        ],
+        [
+            'route'        => 'product/{product_id}/purchase', // Name of route menu
+            'method'       => 'crud', // crud, get, post, put, patch, delete
+            'controller'   => 'ProductPurchaseCrudController', // Name of controller
+            'type'         => 'dashboard' // dashboard, api, dahsboard_api, web
         ]
     ];
 

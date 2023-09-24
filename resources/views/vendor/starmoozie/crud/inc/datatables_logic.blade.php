@@ -444,11 +444,14 @@
         const actionColumnIndex = $('#crudTable').find('th[data-action-column=true]').index();
         if (actionColumnIndex !== -1) {
             $('#crudTable tr').each(function (i, tr) {
-                const actionCell = $(tr).find('td').eq(actionColumnIndex);
+                const td         = $(tr).find('td');
+                td.addClass('text-center');
+
+                const actionCell = td.eq(actionColumnIndex);
                 const actionButtons = $(actionCell).find('a.btn.line');
                 // Wrap the cell with the component needed for the dropdown
                 actionCell.wrapInner('<div class="nav-item dropdown"></div>');
-                actionCell.wrapInner('<div class="dropdown-menu dropdown-menu-left shadow"></div>');
+                actionCell.wrapInner('<div class="dropdown-menu dropdown-menu-top-left shadow"></div>');
                 // Prepare buttons as dropdown items
                 actionButtons.map((index, action) => {
                     $(action).addClass('dropdown-item').removeClass('btn btn-sm btn-link shadow-sm');

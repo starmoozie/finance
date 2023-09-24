@@ -8,7 +8,7 @@ a {
 }
 
 a:hover {
-    transform: translate(0, -2px);
+    transform: translate(0, -1px);
 }
 
 input:hover {
@@ -21,7 +21,7 @@ input:hover {
 }
 
 #crudTable_filter input:hover {
-    transform: translate(0, -2px);
+    transform: translate(0, -1px);
     border-color: #7c69ef;
     filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
@@ -31,7 +31,7 @@ input:hover {
 }
 
 #crudTable_length select:hover {
-    transform: translate(0, -2px);
+    transform: translate(0, -1px);
     border-color: #7c69ef;
     filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
@@ -43,7 +43,7 @@ input:hover {
 }
 
 .btn:hover {
-    transform: translate(0, -2px);
+    transform: translate(0, -1px);
     filter: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
 

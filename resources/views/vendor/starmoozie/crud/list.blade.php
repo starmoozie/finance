@@ -122,6 +122,7 @@
                       data-priority="{{ $crud->getActionsColumnPriority() }}"
                       data-visible-in-export="false"
                       data-action-column="true"
+                      class="text-center"
                       >{{ trans('starmoozie::crud.actions') }}</th>
                 @endif
               </tr>

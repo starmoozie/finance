@@ -62,4 +62,7 @@ return [
     'hint_amount_dashboard' => 'Amount in this month.',
     'hint_weekly_transactions' => 'Weekly Transactions',
     'hint_code' => 'If you leave input to blank. System will automatically generate',
+
+    // Subheadings
+    'from_product' => 'From product code <a href=":url">:Attribute</a>',
 ];

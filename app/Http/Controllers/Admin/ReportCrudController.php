@@ -17,4 +17,19 @@ class ReportCrudController extends BaseCrudController
     protected $orders  = [
         ['name' => 'created_at', 'type' => 'asc']
     ];
+
+    /**
+     * Define what happens when the List operation is loaded.
+     * 
+     * @return void
+     */
+    protected function setupListOperation()
+    {
+        parent::setupListOperation();
+
+        $this->crud->setOperationSetting('searchableTable', false);
+
+        $this->crud->removeAllButtons();
+        $this->crud->denyAccess(['edit', 'create', 'delete']);
+    }
 }
