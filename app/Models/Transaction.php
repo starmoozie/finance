@@ -269,4 +269,9 @@ class Transaction extends BaseModel
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+    public function setDetailsAttribute($value)
+    {
+        $this->attributes['details'] = \Request::segment(2) !== "expense" ? null : json_encode($value);
+    }
 }
