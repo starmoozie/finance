@@ -14,5 +14,11 @@ trait Filters
     protected function setFilters()
     {
         $this->creatorFilter();
+
+        $this->crud->filter('low_stock')
+            ->label(__('starmoozie::title.low_stock'))
+            ->type('simple')
+            ->whenActive(fn($q) => $this->crud->addClause('selectLowStock'))
+            ->apply();
     }
 }

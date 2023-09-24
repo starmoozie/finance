@@ -48,6 +48,7 @@ return [
     'history' => 'History',
     'amount_profit' => 'Amount Profit /pcs',
     'calculated_profit' => 'Calculated Profit /pcs',
+    'low_stock' => 'Low Stock',
 
     // Tabs
     'general' => 'General',
