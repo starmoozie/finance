@@ -15,7 +15,7 @@ class ExpenseRequest extends BaseRequest
             'details.*' => [
                 'required',
             ],
-            'details.*.sub_total' => [
+            'details.*.total_price' => [
                 'required',
                 'regex:/[0-9]{3,15}/',
             ]

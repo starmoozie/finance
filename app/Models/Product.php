@@ -4,8 +4,6 @@ namespace App\Models;
 
 class Product extends BaseModel
 {
-    use \Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
-
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES

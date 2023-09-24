@@ -7,8 +7,6 @@ use App\Constants\TransactionConstant;
 
 class Transaction extends BaseModel
 {
-    use \Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
-
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -47,15 +45,6 @@ class Transaction extends BaseModel
     {
         return $this->belongsTo(User::class, 'created_by');
     }
-
-    // public function products()
-    // {
-    //     return $this->belongsToJson(
-    //         Product::class,
-    //         'details[]->product_id',
-    //         'id'
-    //     );
-    // }
     
     public function products()
     {
@@ -229,26 +218,6 @@ class Transaction extends BaseModel
     }
 
     /**
-     * Show details with product name
-     */
-    public function getDetailsWithProductAttribute()
-    {
-        $products = $this->products;
-        $details  = [];
-        foreach ($this->details as $key => $detail) {
-            $details[$key] = $detail;
-            $details[$key]['product'] = $products->where('id', $detail['product_id'])->first()?->name;
-
-            if (isset($detail['type_profit'])) {
-                $details[$key]['type_profit_formatted'] = $detail['type_profit'] ? __('starmoozie::title.money') : __('starmoozie::title.percent');
-            }
-            unset($details[$key]['product_id']);
-        }
-
-        return $details;
-    }
-
-    /**
      * Total price formatted
      */
     public function getTotalPriceFormattedAttribute()
@@ -282,7 +251,17 @@ class Transaction extends BaseModel
 
     public function getDetailsAttribute($value)
     {
-        return $this->products->pluck('pivot');
+        if (\Request::segment(2) === "expense") {
+            return !\Route::currentRouteName() === "expense.show"
+                ? $value
+                : json_encode(array_map(function($q) {
+                    $q['total_price'] = rupiah($q['total_price']);
+                    return $q;
+                }, json_decode($value, true)));
+        } else {
+            // Manipulated details row is relation N-N
+            return $this->products->pluck('pivot');
+        }
     }
 
     /*

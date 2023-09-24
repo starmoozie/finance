@@ -53,6 +53,6 @@ class ExpenseCrudController extends BaseCrudController
 
     protected function sumTotalPrice($details)
     {
-        return ['total_price' => array_sum(array_column($details, 'sub_total'))];
+        return ['total_price' => array_sum(array_column($details, 'total_price'))];
     }
 }
