@@ -32,7 +32,7 @@ class BaseCrudController extends CrudController
     public function setup()
     {
         $path    = request()->segment(2);
-        $heading = str_replace('-', ' ', $path);
+        $heading = str_replace('-', '', $path);
         $label   = __("starmoozie::title.$heading");
 
         CRUD::setModel($this->model);

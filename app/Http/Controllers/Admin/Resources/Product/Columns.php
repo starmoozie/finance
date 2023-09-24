@@ -18,6 +18,11 @@ trait Columns
         $this->crud->column('code')
             ->label(__('starmoozie::title.code'));
 
+        $this->crud->column('productCategory')
+            ->type('relationship')
+            ->attribute('name')
+            ->label(__('starmoozie::title.productcategory'));
+
         $this->crud->column('name')
             ->label(__('starmoozie::base.name'));
 

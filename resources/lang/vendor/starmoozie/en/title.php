@@ -49,6 +49,7 @@ return [
     'amount_profit' => 'Amount Profit /pcs',
     'calculated_profit' => 'Calculated Profit /pcs',
     'low_stock' => 'Low Stock',
+    'productcategory' => 'Category',
 
     // Tabs
     'general' => 'General',

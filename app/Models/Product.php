@@ -11,6 +11,7 @@ class Product extends BaseModel
     */
 
     protected $fillable = [
+        'product_category_id',
         'code',
         'name',
         'created_by',
@@ -86,6 +87,11 @@ class Product extends BaseModel
         );
     }
 
+    public function productCategory()
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -97,7 +103,7 @@ class Product extends BaseModel
      */
     public function scopeDefaultSelectColumnsList($query)
     {
-        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'buy_price', 'code']);
+        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'buy_price', 'code', 'product_category_id']);
     }
 
     /**
