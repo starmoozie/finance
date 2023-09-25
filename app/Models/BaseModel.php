@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
 {
+    use \GeneaLabs\LaravelModelCaching\Traits\Cachable;
     use \Starmoozie\CRUD\app\Models\Traits\CrudTrait;
     use Resources\ActivitylogTrait;
     use \App\Traits\GenerateId;

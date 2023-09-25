@@ -14,6 +14,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "predis/predis": "^2.2",
         "spatie/laravel-activitylog": "^4.7",
         "starmoozie/laravel-crud": "^2.0",
         "starmoozie/laravel-crud-generators": "^2.0",
@@ -21,6 +22,7 @@
         "staudenmeir/laravel-adjacency-list": "^1.9"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
