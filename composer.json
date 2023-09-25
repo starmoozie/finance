@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.5",
         "predis/predis": "^2.2",
         "spatie/laravel-activitylog": "^4.7",
+        "spatie/laravel-responsecache": "^7.4",
         "starmoozie/laravel-crud": "^2.0",
         "starmoozie/laravel-crud-generators": "^2.0",
         "starmoozie/laravel-menu-permission": "^2.0",
