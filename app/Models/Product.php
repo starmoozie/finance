@@ -125,7 +125,8 @@ class Product extends BaseModel
      */
     public function scopeSelectLowStock($query)
     {
-        return $query->where('stock', '<=', config('starmoozie.crud.min_stock'));
+        return $query->where('stock', '<=', config('starmoozie.crud.min_stock'))
+            ->orWhereNull('stock');
     }
 
     /*
