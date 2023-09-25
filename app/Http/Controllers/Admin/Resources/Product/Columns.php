@@ -15,6 +15,11 @@ trait Columns
     {
         $this->creatorColumn();
 
+        $this->crud->column('seller')
+            ->type('relationship')
+            ->attribute('name')
+            ->label(__('starmoozie::title.seller'));
+
         $this->crud->column('code')
             ->label(__('starmoozie::title.code'));
 

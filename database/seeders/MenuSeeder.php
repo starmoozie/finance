@@ -69,6 +69,12 @@ class MenuSeeder extends Seeder
             'permissions' => ['create', 'read', 'update', 'delete', 'show', 'personal'],
             'controller'  => 'ProductCategoryCrudController'
         ],
+        [
+            'name'        => 'seller',
+            'route'       => 'seller',
+            'permissions' => ['create', 'read', 'update', 'delete', 'show', 'personal'],
+            'controller'  => 'SellerCrudController'
+        ],
     ];
 
     /**

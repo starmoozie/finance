@@ -18,7 +18,8 @@ class Product extends BaseModel
         'stock',
         'buy_price',
         'sell_price',
-        'details'
+        'details',
+        'seller_id'
     ];
 
     protected $casts    = [
@@ -92,6 +93,11 @@ class Product extends BaseModel
         return $this->belongsTo(ProductCategory::class);
     }
 
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -103,7 +109,7 @@ class Product extends BaseModel
      */
     public function scopeDefaultSelectColumnsList($query)
     {
-        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'buy_price', 'code', 'product_category_id']);
+        return $query->select(['id', 'name', 'created_by', 'stock', 'sell_price', 'buy_price', 'code', 'product_category_id', 'seller_id']);
     }
 
     /**
